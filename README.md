@@ -1,8 +1,8 @@
 ﻿# YICG.Apps.Teams.DigitalKnowBot
 
-Bot Framework v4 echo bot sample.
+Digital Know Bot
 
-This bot has been created using [Bot Framework](https://dev.botframework.com), it shows how to create a simple bot that accepts input from the user and echoes it back.
+This bot has been created using [Bot Framework](https://dev.botframework.com), it shows how to create a simple bot that accepts input from the user, and will look up for an answer in the Knowledge Base of QnA Maker, and returns a response to the user in an adaptive card.
 
 ## Prerequisites
 
