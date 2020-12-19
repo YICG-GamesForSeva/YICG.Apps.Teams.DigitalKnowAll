@@ -6,6 +6,10 @@ This bot has been created using [Bot Framework](https://dev.botframework.com), i
 
 ## Prerequisites
 
+- Azure Subscription
+- Access to QnA Maker instance  
+- Access to Word, Excel, or PDF files that contain questions and answers, and you can find some points of guidance [here](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/reference-document-format-guidelines)  
+
 - [.NET Core SDK](https://dotnet.microsoft.com/download) version 3.1
 
   ```bash
