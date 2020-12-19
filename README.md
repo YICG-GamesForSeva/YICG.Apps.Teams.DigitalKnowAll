@@ -1,10 +1,14 @@
 ﻿# YICG.Apps.Teams.DigitalKnowBot
 
-Bot Framework v4 echo bot sample.
+Digital Know Bot
 
-This bot has been created using [Bot Framework](https://dev.botframework.com), it shows how to create a simple bot that accepts input from the user and echoes it back.
+This bot has been created using [Bot Framework](https://dev.botframework.com), it shows how to create a simple bot that accepts input from the user, and will look up for an answer in the Knowledge Base of QnA Maker, and returns a response to the user in an adaptive card.
 
 ## Prerequisites
+
+- Azure Subscription
+- Access to QnA Maker instance  
+- Access to Word, Excel, or PDF files that contain questions and answers, and you can find some points of guidance [here](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/reference-document-format-guidelines)  
 
 - [.NET Core SDK](https://dotnet.microsoft.com/download) version 3.1
 
