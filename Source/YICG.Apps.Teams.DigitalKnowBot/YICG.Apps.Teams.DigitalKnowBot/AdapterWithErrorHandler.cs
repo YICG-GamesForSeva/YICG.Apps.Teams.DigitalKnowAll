@@ -1,15 +1,14 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-//
-// Generated with Bot Builder V4 SDK Template for Visual Studio CoreBot v4.11.1
-
-using Microsoft.Bot.Builder.Integration.AspNet.Core;
-using Microsoft.Bot.Builder.TraceExtensions;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+﻿// <copyright file="AdapterWithErrorHandler.cs" company="Games For Seva">
+// Copyright (c) Games For Seva. All rights reserved.
+// </copyright>
 
 namespace YICG.Apps.Teams.DigitalKnowBot
 {
+    using Microsoft.Bot.Builder.Integration.AspNet.Core;
+    using Microsoft.Bot.Builder.TraceExtensions;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.Logging;
+
     public class AdapterWithErrorHandler : BotFrameworkHttpAdapter
     {
         public AdapterWithErrorHandler(IConfiguration configuration, ILogger<BotFrameworkHttpAdapter> logger)

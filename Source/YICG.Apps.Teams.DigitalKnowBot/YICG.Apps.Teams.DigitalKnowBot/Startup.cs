@@ -1,20 +1,18 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-//
-// Generated with Bot Builder V4 SDK Template for Visual Studio EchoBot v4.11.1
-
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Bot.Builder;
-using Microsoft.Bot.Builder.Integration.AspNet.Core;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-
-using YICG.Apps.Teams.DigitalKnowBot.Bots;
+﻿// <copyright file="Startup.cs" company="Games For Seva">
+// Copyright (c) Games For Seva. All rights reserved.
+// </copyright>
 
 namespace YICG.Apps.Teams.DigitalKnowBot
 {
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.Bot.Builder;
+    using Microsoft.Bot.Builder.Integration.AspNet.Core;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Hosting;
+    using YICG.Apps.Teams.DigitalKnowBot.Bots;
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -36,7 +34,11 @@ namespace YICG.Apps.Teams.DigitalKnowBot
             services.AddTransient<IBot, EchoBot>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// </summary>
+        /// <param name="app">The application builder middleware.</param>
+        /// <param name="env">The web hosting environment middleware.</param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -53,8 +55,6 @@ namespace YICG.Apps.Teams.DigitalKnowBot
                 {
                     endpoints.MapControllers();
                 });
-
-            // app.UseHttpsRedirection();
         }
     }
 }
