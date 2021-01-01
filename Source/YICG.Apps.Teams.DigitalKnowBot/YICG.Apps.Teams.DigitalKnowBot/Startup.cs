@@ -13,16 +13,29 @@ namespace YICG.Apps.Teams.DigitalKnowBot
     using Microsoft.Extensions.Hosting;
     using YICG.Apps.Teams.DigitalKnowBot.Bots;
 
+    /// <summary>
+    /// This is the startup class which registers dependencies and establishes the necessary services to be included.
+    /// </summary>
     public class Startup
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Startup"/> class.
+        /// </summary>
+        /// <param name="configuration">The application key-value settings.</param>
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            this.Configuration = configuration;
         }
 
+        /// <summary>
+        /// Gets the application key-value settings.
+        /// </summary>
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to add services to the container.
+        /// </summary>
+        /// <param name="services">The collection of services or components required for the application to execute.</param>
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers().AddNewtonsoftJson();
