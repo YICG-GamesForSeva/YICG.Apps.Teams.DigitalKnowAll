@@ -1,37 +1,49 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-//
-// Generated with Bot Builder V4 SDK Template for Visual Studio EchoBot v4.11.1
-
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Bot.Builder;
-using Microsoft.Bot.Builder.Integration.AspNet.Core;
+// <copyright file="BotController.cs" company="Games For Seva">
+// Copyright (c) Games For Seva. All rights reserved.
+// </copyright>
 
 namespace YICG.Apps.Teams.DigitalKnowBot.Controllers
 {
-    // This ASP Controller is created to handle a request. Dependency Injection will provide the Adapter and IBot
-    // implementation at runtime. Multiple different IBot implementations running at different endpoints can be
-    // achieved by specifying a more specific type for the bot constructor argument.
+    using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Bot.Builder;
+    using Microsoft.Bot.Builder.Integration.AspNet.Core;
+
+    /// <summary>
+    /// This ASP Controller is created to handle a request. Dependency Injection will provide the Adapter and IBot
+    /// implementation at runtime. Multiple different IBot implementations running at different endpoints can be
+    /// achieved by specifying a more specific type for the bot constructor argument.
+    /// </summary>
     [Route("api/messages")]
     [ApiController]
     public class BotController : ControllerBase
     {
-        private readonly IBotFrameworkHttpAdapter Adapter;
-        private readonly IBot Bot;
+        private readonly IBotFrameworkHttpAdapter adapter;
+        private readonly IBot bot;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BotController"/> class.
+        /// </summary>
+        /// <param name="adapter">The bot framework adapter middleware.</param>
+        /// <param name="bot">The actual bot middleware.</param>
         public BotController(IBotFrameworkHttpAdapter adapter, IBot bot)
         {
-            Adapter = adapter;
-            Bot = bot;
+            this.adapter = adapter;
+            this.bot = bot;
         }
 
-        [HttpPost, HttpGet]
+        /// <summary>
+        /// This method acts as an active listening endpoint for messages from the user, and also will be returning messages
+        /// so that the user can view on the UI of Teams or any other application (i.e. Slack, etc...).
+        /// </summary>
+        /// <returns>A unit of execution that represents an asynchronous operation.</returns>
+        [HttpPost]
+        [HttpGet]
         public async Task PostAsync()
         {
             // Delegate the processing of the HTTP POST to the adapter.
             // The adapter will invoke the bot.
-            await Adapter.ProcessAsync(Request, Response, Bot);
+            await this.adapter.ProcessAsync(this.Request, this.Response, this.bot);
         }
     }
 }

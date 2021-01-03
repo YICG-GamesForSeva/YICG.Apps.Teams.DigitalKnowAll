@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>YICG.Apps.Teams.DigitalKnowBot</name>
+    </assembly>
+    <members>
+        <member name="T:YICG.Apps.Teams.DigitalKnowBot.AdapterWithErrorHandler">
+            <summary>
+            This is the adapter class that inherits from the BotFrameworkHttpAdapter.
+            </summary>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.AdapterWithErrorHandler.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Logging.ILogger{Microsoft.Bot.Builder.Integration.AspNet.Core.BotFrameworkHttpAdapter})">
+            <summary>
+            Initializes a new instance of the <see cref="T:YICG.Apps.Teams.DigitalKnowBot.AdapterWithErrorHandler"/> class.
+            </summary>
+            <param name="configuration">Application key-value settings.</param>
+            <param name="logger">The logging mechanism being injected.</param>
+        </member>
+        <member name="T:YICG.Apps.Teams.DigitalKnowBot.Bots.EchoBot">
+            <summary>
+            This class is our main bot class that will execute all of the functionality.
+            </summary>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Bots.EchoBot.OnMessageActivityAsync(Microsoft.Bot.Builder.ITurnContext{Microsoft.Bot.Schema.IMessageActivity},System.Threading.CancellationToken)">
+            <summary>
+            This method executes whenever there is a new message coming into the bot.
+            </summary>
+            <param name="turnContext">The current turn/execution flow.</param>
+            <param name="cancellationToken">The cancellation token which propogates to signal execution completion.</param>
+            <returns>A unit of execution that represents an asynchronous operation.</returns>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Bots.EchoBot.OnMembersAddedAsync(System.Collections.Generic.IList{Microsoft.Bot.Schema.ChannelAccount},Microsoft.Bot.Builder.ITurnContext{Microsoft.Bot.Schema.IConversationUpdateActivity},System.Threading.CancellationToken)">
+            <summary>
+            This method will execute whenever there is a new member added to the conversation.
+            </summary>
+            <param name="membersAdded">The list of Channel accounts that are being added to the conversation.</param>
+            <param name="turnContext">The current turn/execution flow.</param>
+            <param name="cancellationToken">The cancellation token which propogates to signal execution completion.</param>
+            <returns>A unit of execution that represents an asynchronous operation.</returns>
+        </member>
+        <member name="T:YICG.Apps.Teams.DigitalKnowBot.Controllers.BotController">
+            <summary>
+            This ASP Controller is created to handle a request. Dependency Injection will provide the Adapter and IBot
+            implementation at runtime. Multiple different IBot implementations running at different endpoints can be
+            achieved by specifying a more specific type for the bot constructor argument.
+            </summary>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Controllers.BotController.#ctor(Microsoft.Bot.Builder.Integration.AspNet.Core.IBotFrameworkHttpAdapter,Microsoft.Bot.Builder.IBot)">
+            <summary>
+            Initializes a new instance of the <see cref="T:YICG.Apps.Teams.DigitalKnowBot.Controllers.BotController"/> class.
+            </summary>
+            <param name="adapter">The bot framework adapter middleware.</param>
+            <param name="bot">The actual bot middleware.</param>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Controllers.BotController.PostAsync">
+            <summary>
+            This method acts as an active listening endpoint for messages from the user, and also will be returning messages
+            so that the user can view on the UI of Teams or any other application (i.e. Slack, etc...).
+            </summary>
+            <returns>A unit of execution that represents an asynchronous operation.</returns>
+        </member>
+        <member name="T:YICG.Apps.Teams.DigitalKnowBot.Program">
+            <summary>
+            This is the entry class of the application.
+            </summary>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Program.Main(System.String[])">
+            <summary>
+            This is the main entry point of execution.
+            </summary>
+            <param name="args">Project specific arguments.</param>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            This method creates a hosting environment.
+            </summary>
+            <param name="args">Project specific arguments.</param>
+            <returns>A type of host builder middleware.</returns>
+        </member>
+        <member name="T:YICG.Apps.Teams.DigitalKnowBot.Startup">
+            <summary>
+            This is the startup class which registers dependencies and establishes the necessary services to be included.
+            </summary>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:YICG.Apps.Teams.DigitalKnowBot.Startup"/> class.
+            </summary>
+            <param name="configuration">The application key-value settings.</param>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Startup.Configuration">
+            <summary>
+            Gets the application key-value settings.
+            </summary>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+            <param name="services">The collection of services or components required for the application to execute.</param>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app">The application builder middleware.</param>
+            <param name="env">The web hosting environment middleware.</param>
+        </member>
+    </members>
+</doc>

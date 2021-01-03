@@ -1,21 +1,28 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
-//
-// Generated with Bot Builder V4 SDK Template for Visual Studio CoreBot v4.11.1
-
-using Microsoft.Bot.Builder.Integration.AspNet.Core;
-using Microsoft.Bot.Builder.TraceExtensions;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+﻿// <copyright file="AdapterWithErrorHandler.cs" company="Games For Seva">
+// Copyright (c) Games For Seva. All rights reserved.
+// </copyright>
 
 namespace YICG.Apps.Teams.DigitalKnowBot
 {
+    using Microsoft.Bot.Builder.Integration.AspNet.Core;
+    using Microsoft.Bot.Builder.TraceExtensions;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.Logging;
+
+    /// <summary>
+    /// This is the adapter class that inherits from the BotFrameworkHttpAdapter.
+    /// </summary>
     public class AdapterWithErrorHandler : BotFrameworkHttpAdapter
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AdapterWithErrorHandler"/> class.
+        /// </summary>
+        /// <param name="configuration">Application key-value settings.</param>
+        /// <param name="logger">The logging mechanism being injected.</param>
         public AdapterWithErrorHandler(IConfiguration configuration, ILogger<BotFrameworkHttpAdapter> logger)
             : base(configuration, logger)
         {
-            OnTurnError = async (turnContext, exception) =>
+            this.OnTurnError = async (turnContext, exception) =>
             {
                 // Log any leaked exception from the application.
                 logger.LogError(exception, $"[OnTurnError] unhandled error : {exception.Message}");
