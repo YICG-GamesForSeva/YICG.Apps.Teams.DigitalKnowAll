@@ -4,6 +4,7 @@
 
 namespace YICG.Apps.Teams.DigitalKnowBot.Bots
 {
+    using System;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
@@ -23,6 +24,11 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
         /// <returns>A unit of execution that represents an asynchronous operation.</returns>
         protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
         {
+            if (turnContext is null)
+            {
+                throw new ArgumentNullException(nameof(turnContext));
+            }
+
             var replyText = $"Echo: {turnContext.Activity.Text}";
             await turnContext.SendActivityAsync(MessageFactory.Text(replyText, replyText), cancellationToken);
         }
@@ -36,6 +42,16 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
         /// <returns>A unit of execution that represents an asynchronous operation.</returns>
         protected override async Task OnMembersAddedAsync(IList<ChannelAccount> membersAdded, ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken)
         {
+            if (membersAdded is null)
+            {
+                throw new ArgumentNullException(nameof(membersAdded));
+            }
+
+            if (turnContext is null)
+            {
+                throw new ArgumentNullException(nameof(turnContext));
+            }
+
             var welcomeText = "Hello and welcome!";
             foreach (var member in membersAdded)
             {
