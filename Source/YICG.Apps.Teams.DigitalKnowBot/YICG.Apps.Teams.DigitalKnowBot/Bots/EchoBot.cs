@@ -28,6 +28,11 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
             {
                 throw new ArgumentNullException(nameof(turnContext));
             }
+            if (turnContext.Activity.Text == "intro")
+            {
+                var sampleText = $"Welcome to the Ganga Gamebot!";
+                await turnContext.SendActivityAsync(MessageFactory.Text(sampleText), cancellationToken);
+            }
 
             var replyText = $"Echo: {turnContext.Activity.Text}";
             await turnContext.SendActivityAsync(MessageFactory.Text(replyText, replyText), cancellationToken);
