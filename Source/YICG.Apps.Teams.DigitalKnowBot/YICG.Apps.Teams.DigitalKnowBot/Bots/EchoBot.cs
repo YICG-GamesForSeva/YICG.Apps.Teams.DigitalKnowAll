@@ -16,6 +16,10 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
     /// </summary>
     public class EchoBot : ActivityHandler
     {
+        private const string ConversationTypePersonal = "personal";
+
+        private const string ConversationTypeChannel = "channel";
+
         /// <summary>
         /// This method executes whenever there is a new message coming into the bot.
         /// </summary>

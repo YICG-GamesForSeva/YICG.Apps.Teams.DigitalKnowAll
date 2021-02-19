@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>YICG.Apps.Teams.DigitalKnowBot.Common</name>
+    </assembly>
+    <members>
+        <member name="T:YICG.Apps.Teams.DigitalKnowBot.Common.Models.Configuration.BotSettings">
+            <summary>
+            This class represents all of the bot settings.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Common.Models.Configuration.BotSettings.AccessCacheExpiryInDays">
+            <summary>
+            Gets or sets the access cache expiry in days.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Common.Models.Configuration.BotSettings.AppBaseUri">
+            <summary>
+            Gets or sets the application base uri.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Common.Models.Configuration.BotSettings.MicrosoftAppId">
+            <summary>
+            Gets or sets the Microsoft App ID.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Common.Models.Configuration.BotSettings.TenantId">
+            <summary>
+            Gets or sets the TenantID.
+            </summary>
+        </member>
+    </members>
+</doc>
