@@ -4,6 +4,29 @@
         <name>YICG.Apps.Teams.DigitalKnowBot.Common</name>
     </assembly>
     <members>
+        <member name="T:YICG.Apps.Teams.DigitalKnowBot.Common.Exceptions.TicketValidationException">
+            <summary>
+            Represents an error in ticket validation.
+            </summary>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Common.Exceptions.TicketValidationException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:YICG.Apps.Teams.DigitalKnowBot.Common.Exceptions.TicketValidationException"/> class.
+            </summary>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Common.Exceptions.TicketValidationException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:YICG.Apps.Teams.DigitalKnowBot.Common.Exceptions.TicketValidationException"/> class.
+            </summary>
+            <param name="message">The message to be captured.</param>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Common.Exceptions.TicketValidationException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:YICG.Apps.Teams.DigitalKnowBot.Common.Exceptions.TicketValidationException"/> class.
+            </summary>
+            <param name="message">The message to capture/throw.</param>
+            <param name="inner">The inner exception.</param>
+        </member>
         <member name="T:YICG.Apps.Teams.DigitalKnowBot.Common.Models.Configuration.BotSettings">
             <summary>
             This class represents all of the bot settings.
@@ -27,6 +50,46 @@
         <member name="P:YICG.Apps.Teams.DigitalKnowBot.Common.Models.Configuration.BotSettings.TenantId">
             <summary>
             Gets or sets the TenantID.
+            </summary>
+        </member>
+        <member name="T:YICG.Apps.Teams.DigitalKnowBot.Common.Models.Configuration.KnowledgeBaseSettings">
+            <summary>
+            This class represents the knowledge base settings.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Common.Models.Configuration.KnowledgeBaseSettings.StorageConnectionString">
+            <summary>
+            Gets or sets the storage connection string.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Common.Models.Configuration.KnowledgeBaseSettings.SearchServiceName">
+            <summary>
+            Gets or sets the search service name.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Common.Models.Configuration.KnowledgeBaseSettings.SearchServiceQueryApiKey">
+            <summary>
+            Gets or sets the search service query api key.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Common.Models.Configuration.KnowledgeBaseSettings.SearchServiceAdminApiKey">
+            <summary>
+            Gets or sets the search service admin api key.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Common.Models.Configuration.KnowledgeBaseSettings.SearchIndexingIntervalInMinutes">
+            <summary>
+            Gets or sets the search indexing interval in minutes.
+            </summary>
+        </member>
+        <member name="T:YICG.Apps.Teams.DigitalKnowBot.Common.Models.Configuration.QnAMakerSettings">
+            <summary>
+            Provides application settings related to the QnAMakerServiceProvider.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Common.Models.Configuration.QnAMakerSettings.ScoreThreshold">
+            <summary>
+            Gets or sets the score threshold.
             </summary>
         </member>
     </members>
