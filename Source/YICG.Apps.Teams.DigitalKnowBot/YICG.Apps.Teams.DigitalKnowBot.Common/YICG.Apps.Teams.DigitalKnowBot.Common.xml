@@ -223,6 +223,117 @@
             Gets or sets the Teams-specific action.
             </summary>
         </member>
+        <member name="T:YICG.Apps.Teams.DigitalKnowBot.Common.Models.TicketEntity">
+            <summary>
+            Represents the Ticket entity used for storage and retrieval.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Common.Models.TicketEntity.TicketId">
+            <summary>
+            Gets or sets the ticket ID.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Common.Models.TicketEntity.Status">
+            <summary>
+            Gets or sets the ticket status.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Common.Models.TicketEntity.Title">
+            <summary>
+            Gets or sets the title of the ticket.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Common.Models.TicketEntity.Description">
+            <summary>
+            Gets or sets the description of the ticket.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Common.Models.TicketEntity.DateCreated">
+            <summary>
+            Gets or sets the created date of ticket.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Common.Models.TicketEntity.RequesterName">
+            <summary>
+            Gets or sets the display name of the user that created the ticket.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Common.Models.TicketEntity.RequesterUserPrincipalName">
+            <summary>
+            Gets or sets the user principal name (UPN) of the user that created the ticket.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Common.Models.TicketEntity.RequesterGivenName">
+            <summary>
+            Gets or sets the given name of the user that created the ticket.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Common.Models.TicketEntity.RequesterConversationId">
+            <summary>
+            Gets or sets the conversation ID of the 1:1 chat with the user that created the ticket.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Common.Models.TicketEntity.SmeCardActivityId">
+            <summary>
+            Gets or sets the activity ID of the root card in the SME channel.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Common.Models.TicketEntity.SmeThreadConversationId">
+            <summary>
+            Gets or sets the conversation ID of the thread pertaining to this ticket in the SME channel.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Common.Models.TicketEntity.DateAssigned">
+            <summary>
+            Gets or sets the UTC date and time the ticket was last assigned.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Common.Models.TicketEntity.AssignedToName">
+            <summary>
+            Gets or sets the display name of the assigned SME currently working on the ticket.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Common.Models.TicketEntity.AssignedToObjectId">
+            <summary>
+            Gets or sets the AAD object ID of the assigned SME currently working on the ticket.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Common.Models.TicketEntity.DateClosed">
+            <summary>
+            Gets or sets the UTC date and time the ticket was closed.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Common.Models.TicketEntity.LastModifiedByName">
+            <summary>
+            Gets or sets the display name of the user that last modified the ticket.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Common.Models.TicketEntity.LastModifiedByObjectId">
+            <summary>
+            Gets or sets the AAD object ID of the user that last modified the ticket.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Common.Models.TicketEntity.UserQuestion">
+            <summary>
+            Gets or sets the question that the user typed.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Common.Models.TicketEntity.KnowledgeBaseAnswer">
+            <summary>
+            Gets or sets the answer returned to the user from the knowledge base.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Common.Models.TicketEntity.Timestamp">
+            <summary>
+            Gets timestamp from storage table.
+            </summary>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Common.Models.TicketEntity.IsAssigned">
+            <summary>
+            Checks whether or not a ticket is assigned.
+            </summary>
+            <returns>Returns a bool value.</returns>
+        </member>
         <member name="T:YICG.Apps.Teams.DigitalKnowBot.Common.Models.TicketSearchScope">
             <summary>
             This enumeration represents the ticket search scope.
@@ -241,6 +352,26 @@
         <member name="F:YICG.Apps.Teams.DigitalKnowBot.Common.Models.TicketSearchScope.AssignedTickets">
             <summary>
             Tickets assigned to a subject-matter expert
+            </summary>
+        </member>
+        <member name="T:YICG.Apps.Teams.DigitalKnowBot.Common.Models.TicketState">
+            <summary>
+            Represents the current state/status of a ticket.
+            </summary>
+        </member>
+        <member name="F:YICG.Apps.Teams.DigitalKnowBot.Common.Models.TicketState.Open">
+            <summary>
+            Represents an active ticket
+            </summary>
+        </member>
+        <member name="F:YICG.Apps.Teams.DigitalKnowBot.Common.Models.TicketState.Closed">
+            <summary>
+            Represents a ticket that requires no further action
+            </summary>
+        </member>
+        <member name="F:YICG.Apps.Teams.DigitalKnowBot.Common.Models.TicketState.MaxValue">
+            <summary>
+            Sentinel value
             </summary>
         </member>
     </members>
