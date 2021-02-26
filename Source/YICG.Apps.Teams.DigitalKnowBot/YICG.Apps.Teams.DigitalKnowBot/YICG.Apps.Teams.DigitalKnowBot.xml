@@ -77,6 +77,48 @@
             <param name="args">Project specific arguments.</param>
             <returns>A type of host builder middleware.</returns>
         </member>
+        <member name="T:YICG.Apps.Teams.DigitalKnowBot.Services.IQnAMakerFactory">
+            <summary>
+            This interface will be used in querying the QnA Maker knowledge base.
+            </summary>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Services.IQnAMakerFactory.GetQnAMaker(System.String,System.String)">
+            <summary>
+            Gets the <see cref="T:Microsoft.Bot.Builder.AI.QnA.QnAMaker"/> instance to use when querying the knowledge base.
+            </summary>
+            <param name="knowledgeBaseId">The knowledge base ID.</param>
+            <param name="endpointKey">The endpoint key.</param>
+            <returns>A QnAMaker instance.</returns>
+        </member>
+        <member name="T:YICG.Apps.Teams.DigitalKnowBot.Services.ISearchService">
+            <summary>
+            This is the interface for the Azure Search Service.
+            </summary>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Services.ISearchService.SearchTicketsAsync(YICG.Apps.Teams.DigitalKnowBot.Common.Models.TicketSearchScope,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            This method provides the search results from the table to be used in the SME team based on the Azure Search Service.
+            </summary>
+            <param name="searchScope">Scope of the search.</param>
+            <param name="searchQuery">The query that is provided by the messaging extension.</param>
+            <param name="count">The number of search results to return.</param>
+            <param name="skip">The number of search results to skip.</param>
+            <returns>A list of the search results as defined by the query.</returns>
+        </member>
+        <member name="T:YICG.Apps.Teams.DigitalKnowBot.Services.QnAMakerFactory">
+            <summary>
+            This class produces the right <see cref="T:Microsoft.Bot.Builder.AI.QnA.QnAMaker"/> instance to have the correct knowledge base to be used.
+            </summary>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Services.QnAMakerFactory.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:YICG.Apps.Teams.DigitalKnowBot.Services.QnAMakerFactory"/> class.
+            </summary>
+            <param name="configuration">App configuration.</param>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Services.QnAMakerFactory.GetQnAMaker(System.String,System.String)">
+            <inheritdoc/>
+        </member>
         <member name="T:YICG.Apps.Teams.DigitalKnowBot.Startup">
             <summary>
             This is the startup class which registers dependencies and establishes the necessary services to be included.

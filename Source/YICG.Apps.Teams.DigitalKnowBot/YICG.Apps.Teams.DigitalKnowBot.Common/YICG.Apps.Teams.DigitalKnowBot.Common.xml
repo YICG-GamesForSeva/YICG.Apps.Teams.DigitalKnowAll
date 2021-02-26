@@ -374,5 +374,15 @@
             Sentinel value
             </summary>
         </member>
+        <member name="T:YICG.Apps.Teams.DigitalKnowBot.Common.Providers.StorageInfo">
+            <summary>
+            This class references to the storage table.
+            </summary>
+        </member>
+        <member name="F:YICG.Apps.Teams.DigitalKnowBot.Common.Providers.StorageInfo.TicketTableName">
+            <summary>
+            Table name where SME activity details from the bot will be saved.
+            </summary>
+        </member>
     </members>
 </doc>
