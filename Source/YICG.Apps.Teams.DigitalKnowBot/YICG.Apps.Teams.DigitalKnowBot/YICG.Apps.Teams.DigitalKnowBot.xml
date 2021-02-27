@@ -119,6 +119,47 @@
         <member name="M:YICG.Apps.Teams.DigitalKnowBot.Services.QnAMakerFactory.GetQnAMaker(System.String,System.String)">
             <inheritdoc/>
         </member>
+        <member name="T:YICG.Apps.Teams.DigitalKnowBot.Services.SearchService">
+            <summary>
+            This class implements all of the method(s) defined in <see cref="T:YICG.Apps.Teams.DigitalKnowBot.Services.ISearchService"/>.
+            </summary>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Services.SearchService.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.ApplicationInsights.TelemetryClient)">
+            <summary>
+            Initializes a new instance of the <see cref="T:YICG.Apps.Teams.DigitalKnowBot.Services.SearchService"/> class.
+            </summary>
+            <param name="configuration">Application configuration settings.</param>
+            <param name="telemetryClient">Application logging and insights DI.</param>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Services.SearchService.SearchTicketsAsync(YICG.Apps.Teams.DigitalKnowBot.Common.Models.TicketSearchScope,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <inheritdoc/>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Services.SearchService.InitializeAsync(System.String)">
+            <summary>
+            Create the index, indexer, and data source if they do not exist.
+            </summary>
+            <param name="storageConnectionString">The storage connection string for Azure table storage.</param>
+            <returns>A unit of execution that would be used for tracking execution.</returns>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Services.SearchService.CreateIndexAsync">
+            <summary>
+            Create index in Azure search service if it doesn't exists.
+            </summary>
+            <returns><see cref="T:System.Threading.Tasks.Task"/> that represents index is created if it is not created.</returns>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Services.SearchService.CreateDataSourceAsync(System.String)">
+            <summary>
+            Add data source if it doesn't exists in Azure search service.
+            </summary>
+            <param name="connectionString">connectionString.</param>
+            <returns><see cref="T:System.Threading.Tasks.Task"/> that represents data source is added to Azure search service.</returns>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Services.SearchService.CreateIndexerAsync">
+            <summary>
+            Create indexer if it doesnt exists in Azure search service.
+            </summary>
+            <returns><see cref="T:System.Threading.Tasks.Task"/> that represents indexer is created if not available in Azure search service.</returns>
+        </member>
         <member name="T:YICG.Apps.Teams.DigitalKnowBot.Startup">
             <summary>
             This is the startup class which registers dependencies and establishes the necessary services to be included.

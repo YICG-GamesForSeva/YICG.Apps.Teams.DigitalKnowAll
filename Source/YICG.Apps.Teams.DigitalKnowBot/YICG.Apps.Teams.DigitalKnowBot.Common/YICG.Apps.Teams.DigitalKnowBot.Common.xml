@@ -374,6 +374,25 @@
             Sentinel value
             </summary>
         </member>
+        <member name="T:YICG.Apps.Teams.DigitalKnowBot.Common.Providers.ITicketsProvider">
+            <summary>
+            This interface will be able to provide methods for storing ticket information in Azure table storage.
+            </summary>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Common.Providers.ITicketsProvider.SaveOrUpdateTicketAsync(YICG.Apps.Teams.DigitalKnowBot.Common.Models.TicketEntity)">
+            <summary>
+            Save or update ticket entity.
+            </summary>
+            <param name="ticket">Ticket received from bot based on which appropriate row will replaced or inserted in table storage.</param>
+            <returns><see cref="T:System.Threading.Tasks.Task"/> that resolves successfully if the data was saved successfully.</returns>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Common.Providers.ITicketsProvider.GetTicketAsync(System.String)">
+            <summary>
+            Get already saved entity detail from storage table.
+            </summary>
+            <param name="ticketId">ticket id received from bot based on which appropriate row data will be fetched.</param>
+            <returns><see cref="T:System.Threading.Tasks.Task"/> Already saved entity detail.</returns>
+        </member>
         <member name="T:YICG.Apps.Teams.DigitalKnowBot.Common.Providers.StorageInfo">
             <summary>
             This class references to the storage table.
@@ -383,6 +402,51 @@
             <summary>
             Table name where SME activity details from the bot will be saved.
             </summary>
+        </member>
+        <member name="T:YICG.Apps.Teams.DigitalKnowBot.Common.Providers.TicketsProvider">
+            <summary>
+            This class will implement the methods defined in <see cref="T:YICG.Apps.Teams.DigitalKnowBot.Common.Providers.ITicketsProvider"/>.
+            </summary>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Common.Providers.TicketsProvider.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:YICG.Apps.Teams.DigitalKnowBot.Common.Providers.TicketsProvider"/> class.
+            </summary>
+            <param name="connectionString">connection string of storage provided by DI.</param>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Common.Providers.TicketsProvider.GetTicketAsync(System.String)">
+            <summary>
+            This method will get a ticket from the table storage.
+            </summary>
+            <param name="ticketId">The ticket ID.</param>
+            <returns>A unit of execution that contains a type of <see cref="T:YICG.Apps.Teams.DigitalKnowBot.Common.Models.TicketEntity"/>.</returns>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Common.Providers.TicketsProvider.SaveOrUpdateTicketAsync(YICG.Apps.Teams.DigitalKnowBot.Common.Models.TicketEntity)">
+            <summary>
+            Store or update the ticket entity in table storage.
+            </summary>
+            <param name="ticket">The ticket entity.</param>
+            <returns>A unit of execution.</returns>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Common.Providers.TicketsProvider.StoreOrUpdateTicketEntityAsync(YICG.Apps.Teams.DigitalKnowBot.Common.Models.TicketEntity)">
+            <summary>
+            Store or update ticket entity in table storage.
+            </summary>
+            <param name="entity">entity.</param>
+            <returns><see cref="T:System.Threading.Tasks.Task"/> that represents configuration entity is saved or updated.</returns>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Common.Providers.TicketsProvider.InitializeAsync(System.String)">
+            <summary>
+            Create tickets table if it doesn't exists.
+            </summary>
+            <param name="connectionString">storage account connection string.</param>
+            <returns><see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation task which represents table is created if its not existing.</returns>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Common.Providers.TicketsProvider.EnsureInitializedAsync">
+            <summary>
+            Initialization of InitializeAsync method which will help in creating table.
+            </summary>
+            <returns>A unit of execution.</returns>
         </member>
     </members>
 </doc>
