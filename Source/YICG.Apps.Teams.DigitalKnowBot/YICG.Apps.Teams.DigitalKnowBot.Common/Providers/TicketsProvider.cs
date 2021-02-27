@@ -100,7 +100,7 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Common.Providers
         /// <returns>A unit of execution.</returns>
         private async Task EnsureInitializedAsync()
         {
-            await this.initializeTask.Value;
+            await this.initializeTask.Value.ConfigureAwait(false);
         }
     }
 }
