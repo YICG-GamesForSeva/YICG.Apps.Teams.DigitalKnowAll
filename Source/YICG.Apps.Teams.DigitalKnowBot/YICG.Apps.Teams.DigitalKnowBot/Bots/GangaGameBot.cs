@@ -1,4 +1,4 @@
-// <copyright file="EchoBot.cs" company="Games For Seva">
+// <copyright file="GangaGameBot.cs" company="Games For Seva">
 // Copyright (c) Games For Seva. All rights reserved.
 // </copyright>
 
@@ -14,7 +14,7 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
     /// <summary>
     /// This class is our main bot class that will execute all of the functionality.
     /// </summary>
-    public class EchoBot : ActivityHandler
+    public class GangaGameBot : ActivityHandler
     {
         private const string ConversationTypePersonal = "personal";
 

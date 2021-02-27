@@ -16,12 +16,12 @@
             <param name="configuration">Application key-value settings.</param>
             <param name="logger">The logging mechanism being injected.</param>
         </member>
-        <member name="T:YICG.Apps.Teams.DigitalKnowBot.Bots.EchoBot">
+        <member name="T:YICG.Apps.Teams.DigitalKnowBot.Bots.GangaGameBot">
             <summary>
             This class is our main bot class that will execute all of the functionality.
             </summary>
         </member>
-        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Bots.EchoBot.OnMessageActivityAsync(Microsoft.Bot.Builder.ITurnContext{Microsoft.Bot.Schema.IMessageActivity},System.Threading.CancellationToken)">
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Bots.GangaGameBot.OnMessageActivityAsync(Microsoft.Bot.Builder.ITurnContext{Microsoft.Bot.Schema.IMessageActivity},System.Threading.CancellationToken)">
             <summary>
             This method executes whenever there is a new message coming into the bot.
             </summary>
@@ -29,7 +29,7 @@
             <param name="cancellationToken">The cancellation token which propogates to signal execution completion.</param>
             <returns>A unit of execution that represents an asynchronous operation.</returns>
         </member>
-        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Bots.EchoBot.OnMembersAddedAsync(System.Collections.Generic.IList{Microsoft.Bot.Schema.ChannelAccount},Microsoft.Bot.Builder.ITurnContext{Microsoft.Bot.Schema.IConversationUpdateActivity},System.Threading.CancellationToken)">
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Bots.GangaGameBot.OnMembersAddedAsync(System.Collections.Generic.IList{Microsoft.Bot.Schema.ChannelAccount},Microsoft.Bot.Builder.ITurnContext{Microsoft.Bot.Schema.IConversationUpdateActivity},System.Threading.CancellationToken)">
             <summary>
             This method will execute whenever there is a new member added to the conversation.
             </summary>
