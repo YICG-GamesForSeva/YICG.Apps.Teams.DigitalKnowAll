@@ -6,10 +6,12 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.Bot.Builder;
     using Microsoft.Bot.Schema;
+    using YICG.Apps.Teams.DigitalKnowBot.Bots.Cards;
 
     /// <summary>
     /// This class is our main bot class that will execute all of the functionality.
@@ -52,13 +54,21 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
                 throw new ArgumentNullException(nameof(turnContext));
             }
 
-            var welcomeText = "Hello and welcome!";
-            foreach (var member in membersAdded)
+            // var welcomeText = "Hello and welcome!";
+            // foreach (var member in membersAdded)
+            // {
+            //     if (member.Id != turnContext.Activity.Recipient.Id)
+            //     {
+            //         await turnContext.SendActivityAsync(MessageFactory.Text(welcomeText, welcomeText), cancellationToken);
+            //     }
+            // }
+
+            var activity = turnContext.Activity;
+            if (membersAdded.Any(m => m.Id == activity.Recipient.Id))
             {
-                if (member.Id != turnContext.Activity.Recipient.Id)
-                {
-                    await turnContext.SendActivityAsync(MessageFactory.Text(welcomeText, welcomeText), cancellationToken);
-                }
+                var welcomeText = "Hello and Welcome!";
+                var userWelcomeCardAttachment = WelcomeCard.GetCard(welcomeText);
+
             }
         }
     }
