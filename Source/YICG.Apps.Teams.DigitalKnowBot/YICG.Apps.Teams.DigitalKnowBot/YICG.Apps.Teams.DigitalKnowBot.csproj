@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>D:\gangaGameBot\YICG.Apps.Teams.DigitalKnowAll\Source\YICG.Apps.Teams.DigitalKnowBot\YICG.Apps.Teams.DigitalKnowBot\YICG.Apps.Teams.DigitalKnowBot.xml</DocumentationFile>
+    <DocumentationFile>D:\GitHub\YICG.Apps.Teams.DigitalKnowAll\Source\YICG.Apps.Teams.DigitalKnowBot\YICG.Apps.Teams.DigitalKnowBot\YICG.Apps.Teams.DigitalKnowBot.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
