@@ -65,6 +65,11 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
                     await turnContext.SendActivityAsync(MessageFactory.Text(welcomeText, welcomeText), cancellationToken);
                 }
             }
+            //var activity = turnContext.Activity;
+            //if (membersAdded.Any(membersAdded => membersAdded.Id == activity.Recipient.Id)
+            //{
+            //    var welcomeText = "Hello and Welcome";
+            //}
         }
     }
 }
