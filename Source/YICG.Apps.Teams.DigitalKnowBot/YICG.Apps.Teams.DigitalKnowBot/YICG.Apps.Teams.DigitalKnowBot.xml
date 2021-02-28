@@ -38,6 +38,18 @@
             <param name="cancellationToken">The cancellation token which propogates to signal execution completion.</param>
             <returns>A unit of execution that represents an asynchronous operation.</returns>
         </member>
+        <member name="T:YICG.Apps.Teams.DigitalKnowBot.Cards.WelcomeCard">
+            <summary>
+            This class represents the welcome card that would be shown to the user.
+            </summary>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Cards.WelcomeCard.GetCard(System.String)">
+            <summary>
+            This method will generate the exact card to render.
+            </summary>
+            <param name="welcomeText">The welcoming text to show.</param>
+            <returns>An attachment to be appended to a message.</returns>
+        </member>
         <member name="T:YICG.Apps.Teams.DigitalKnowBot.Controllers.BotController">
             <summary>
             This ASP Controller is created to handle a request. Dependency Injection will provide the Adapter and IBot

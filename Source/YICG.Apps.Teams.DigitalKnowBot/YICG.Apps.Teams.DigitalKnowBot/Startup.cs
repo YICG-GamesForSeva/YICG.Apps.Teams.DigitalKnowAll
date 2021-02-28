@@ -4,7 +4,6 @@
 
 namespace YICG.Apps.Teams.DigitalKnowBot
 {
-    using Microsoft.ApplicationInsights;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Bot.Builder;

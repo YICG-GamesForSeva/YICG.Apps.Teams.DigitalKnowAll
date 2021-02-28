@@ -58,19 +58,12 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
                 throw new ArgumentNullException(nameof(turnContext));
             }
 
-            // var welcomeText = "Hello and welcome!";
-            // foreach (var member in membersAdded)
-            // {
-            //     if (member.Id != turnContext.Activity.Recipient.Id)
-            //     {
-            //         await turnContext.SendActivityAsync(MessageFactory.Text(welcomeText, welcomeText), cancellationToken);
-            //     }
-            // }
             var activity = turnContext.Activity;
             if (membersAdded.Any(m => m.Id == activity.Recipient.Id))
             {
                 var welcomeText = "Hello and Welcome!";
                 var userWelcomeCardAttachment = WelcomeCard.GetCard(welcomeText);
+                await turnContext.SendActivityAsync(MessageFactory.Attachment(userWelcomeCardAttachment), cancellationToken);
             }
         }
     }
