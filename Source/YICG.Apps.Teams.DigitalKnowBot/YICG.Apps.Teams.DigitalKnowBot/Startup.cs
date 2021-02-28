@@ -4,14 +4,19 @@
 
 namespace YICG.Apps.Teams.DigitalKnowBot
 {
+    using Microsoft.ApplicationInsights;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Bot.Builder;
+    using Microsoft.Bot.Builder.BotFramework;
     using Microsoft.Bot.Builder.Integration.AspNet.Core;
+    using Microsoft.Bot.Connector.Authentication;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using YICG.Apps.Teams.DigitalKnowBot.Bots;
+    using YICG.Apps.Teams.DigitalKnowBot.Common.Providers;
+    using YICG.Apps.Teams.DigitalKnowBot.Services;
 
     /// <summary>
     /// This is the startup class which registers dependencies and establishes the necessary services to be included.
@@ -40,11 +45,22 @@ namespace YICG.Apps.Teams.DigitalKnowBot
         {
             services.AddControllers().AddNewtonsoftJson();
 
+            services.AddHttpClient();
+            services.AddSingleton<ICredentialProvider, ConfigurationCredentialProvider>();
+            services.AddSingleton<ITicketsProvider>(new TicketsProvider(this.Configuration["StorageConnectionString"]));
+            services.AddSingleton(new MicrosoftAppCredentials(this.Configuration["MicrosoftAppId"], this.Configuration["MicrosoftAppPassword"]));
+
             // Create the Bot Framework Adapter with error handling enabled.
             services.AddSingleton<IBotFrameworkHttpAdapter, AdapterWithErrorHandler>();
 
             // Create the bot as a transient. In this case the ASP Controller is expecting an IBot.
-            services.AddTransient<IBot, EchoBot>();
+            services.AddTransient<IBot, GangaGameBot>();
+
+            services.AddApplicationInsightsTelemetry();
+
+            services.AddSingleton<IQnAMakerFactory, QnAMakerFactory>();
+            services.AddSingleton<ISearchService, SearchService>();
+            services.AddMemoryCache();
         }
 
         /// <summary>

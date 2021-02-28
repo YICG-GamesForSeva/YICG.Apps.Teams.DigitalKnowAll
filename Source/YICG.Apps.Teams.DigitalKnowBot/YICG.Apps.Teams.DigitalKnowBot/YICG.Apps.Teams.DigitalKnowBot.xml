@@ -16,12 +16,12 @@
             <param name="configuration">Application key-value settings.</param>
             <param name="logger">The logging mechanism being injected.</param>
         </member>
-        <member name="T:YICG.Apps.Teams.DigitalKnowBot.Bots.EchoBot">
+        <member name="T:YICG.Apps.Teams.DigitalKnowBot.Bots.GangaGameBot">
             <summary>
             This class is our main bot class that will execute all of the functionality.
             </summary>
         </member>
-        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Bots.EchoBot.OnMessageActivityAsync(Microsoft.Bot.Builder.ITurnContext{Microsoft.Bot.Schema.IMessageActivity},System.Threading.CancellationToken)">
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Bots.GangaGameBot.OnMessageActivityAsync(Microsoft.Bot.Builder.ITurnContext{Microsoft.Bot.Schema.IMessageActivity},System.Threading.CancellationToken)">
             <summary>
             This method executes whenever there is a new message coming into the bot.
             </summary>
@@ -29,7 +29,7 @@
             <param name="cancellationToken">The cancellation token which propogates to signal execution completion.</param>
             <returns>A unit of execution that represents an asynchronous operation.</returns>
         </member>
-        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Bots.EchoBot.OnMembersAddedAsync(System.Collections.Generic.IList{Microsoft.Bot.Schema.ChannelAccount},Microsoft.Bot.Builder.ITurnContext{Microsoft.Bot.Schema.IConversationUpdateActivity},System.Threading.CancellationToken)">
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Bots.GangaGameBot.OnMembersAddedAsync(System.Collections.Generic.IList{Microsoft.Bot.Schema.ChannelAccount},Microsoft.Bot.Builder.ITurnContext{Microsoft.Bot.Schema.IConversationUpdateActivity},System.Threading.CancellationToken)">
             <summary>
             This method will execute whenever there is a new member added to the conversation.
             </summary>
@@ -76,6 +76,89 @@
             </summary>
             <param name="args">Project specific arguments.</param>
             <returns>A type of host builder middleware.</returns>
+        </member>
+        <member name="T:YICG.Apps.Teams.DigitalKnowBot.Services.IQnAMakerFactory">
+            <summary>
+            This interface will be used in querying the QnA Maker knowledge base.
+            </summary>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Services.IQnAMakerFactory.GetQnAMaker(System.String,System.String)">
+            <summary>
+            Gets the <see cref="T:Microsoft.Bot.Builder.AI.QnA.QnAMaker"/> instance to use when querying the knowledge base.
+            </summary>
+            <param name="knowledgeBaseId">The knowledge base ID.</param>
+            <param name="endpointKey">The endpoint key.</param>
+            <returns>A QnAMaker instance.</returns>
+        </member>
+        <member name="T:YICG.Apps.Teams.DigitalKnowBot.Services.ISearchService">
+            <summary>
+            This is the interface for the Azure Search Service.
+            </summary>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Services.ISearchService.SearchTicketsAsync(YICG.Apps.Teams.DigitalKnowBot.Common.Models.TicketSearchScope,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            This method provides the search results from the table to be used in the SME team based on the Azure Search Service.
+            </summary>
+            <param name="searchScope">Scope of the search.</param>
+            <param name="searchQuery">The query that is provided by the messaging extension.</param>
+            <param name="count">The number of search results to return.</param>
+            <param name="skip">The number of search results to skip.</param>
+            <returns>A list of the search results as defined by the query.</returns>
+        </member>
+        <member name="T:YICG.Apps.Teams.DigitalKnowBot.Services.QnAMakerFactory">
+            <summary>
+            This class produces the right <see cref="T:Microsoft.Bot.Builder.AI.QnA.QnAMaker"/> instance to have the correct knowledge base to be used.
+            </summary>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Services.QnAMakerFactory.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:YICG.Apps.Teams.DigitalKnowBot.Services.QnAMakerFactory"/> class.
+            </summary>
+            <param name="configuration">App configuration.</param>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Services.QnAMakerFactory.GetQnAMaker(System.String,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="T:YICG.Apps.Teams.DigitalKnowBot.Services.SearchService">
+            <summary>
+            This class implements all of the method(s) defined in <see cref="T:YICG.Apps.Teams.DigitalKnowBot.Services.ISearchService"/>.
+            </summary>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Services.SearchService.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.ApplicationInsights.TelemetryClient)">
+            <summary>
+            Initializes a new instance of the <see cref="T:YICG.Apps.Teams.DigitalKnowBot.Services.SearchService"/> class.
+            </summary>
+            <param name="configuration">Application configuration settings.</param>
+            <param name="telemetryClient">Application logging and insights DI.</param>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Services.SearchService.SearchTicketsAsync(YICG.Apps.Teams.DigitalKnowBot.Common.Models.TicketSearchScope,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <inheritdoc/>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Services.SearchService.InitializeAsync(System.String)">
+            <summary>
+            Create the index, indexer, and data source if they do not exist.
+            </summary>
+            <param name="storageConnectionString">The storage connection string for Azure table storage.</param>
+            <returns>A unit of execution that would be used for tracking execution.</returns>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Services.SearchService.CreateIndexAsync">
+            <summary>
+            Create index in Azure search service if it doesn't exists.
+            </summary>
+            <returns><see cref="T:System.Threading.Tasks.Task"/> that represents index is created if it is not created.</returns>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Services.SearchService.CreateDataSourceAsync(System.String)">
+            <summary>
+            Add data source if it doesn't exists in Azure search service.
+            </summary>
+            <param name="connectionString">connectionString.</param>
+            <returns><see cref="T:System.Threading.Tasks.Task"/> that represents data source is added to Azure search service.</returns>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Services.SearchService.CreateIndexerAsync">
+            <summary>
+            Create indexer if it doesnt exists in Azure search service.
+            </summary>
+            <returns><see cref="T:System.Threading.Tasks.Task"/> that represents indexer is created if not available in Azure search service.</returns>
         </member>
         <member name="T:YICG.Apps.Teams.DigitalKnowBot.Startup">
             <summary>
