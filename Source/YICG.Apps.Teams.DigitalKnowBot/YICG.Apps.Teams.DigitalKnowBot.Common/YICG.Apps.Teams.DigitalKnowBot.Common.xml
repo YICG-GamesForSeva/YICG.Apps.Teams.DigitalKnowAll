@@ -149,6 +149,26 @@
             Gets or sets the score threshold.
             </summary>
         </member>
+        <member name="T:YICG.Apps.Teams.DigitalKnowBot.Common.Models.Constants">
+            <summary>
+            This class defines all the constants that the Ganga Game bot is working.
+            </summary>
+        </member>
+        <member name="F:YICG.Apps.Teams.DigitalKnowBot.Common.Models.Constants.ConversationTypePersonal">
+            <summary>
+            This constant represents a conversation in personal scope.
+            </summary>
+        </member>
+        <member name="F:YICG.Apps.Teams.DigitalKnowBot.Common.Models.Constants.ConversationTypeChannel">
+            <summary>
+            This constant represents a conversation in team scope.
+            </summary>
+        </member>
+        <member name="F:YICG.Apps.Teams.DigitalKnowBot.Common.Models.Constants.TakeATourPersonalCommand">
+            <summary>
+            This constant represents a command to be taking a tour in personal scope.
+            </summary>
+        </member>
         <member name="T:YICG.Apps.Teams.DigitalKnowBot.Common.Models.FeedbackRating">
             <summary>
             Represents the user rating given for the feedback.

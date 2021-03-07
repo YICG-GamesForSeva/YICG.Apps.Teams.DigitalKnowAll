@@ -21,6 +21,14 @@
             This class is our main bot class that will execute all of the functionality.
             </summary>
         </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Bots.GangaGameBot.OnTurnAsync(Microsoft.Bot.Builder.ITurnContext,System.Threading.CancellationToken)">
+            <summary>
+            This method always executes whenever a message is being sent to the bot.
+            </summary>
+            <param name="turnContext">The current turn in an converstaion.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A unit of execution.</returns>
+        </member>
         <member name="M:YICG.Apps.Teams.DigitalKnowBot.Bots.GangaGameBot.OnMessageActivityAsync(Microsoft.Bot.Builder.ITurnContext{Microsoft.Bot.Schema.IMessageActivity},System.Threading.CancellationToken)">
             <summary>
             This method executes whenever there is a new message coming into the bot.
@@ -37,6 +45,18 @@
             <param name="turnContext">The current turn/execution flow.</param>
             <param name="cancellationToken">The cancellation token which propogates to signal execution completion.</param>
             <returns>A unit of execution that represents an asynchronous operation.</returns>
+        </member>
+        <member name="T:YICG.Apps.Teams.DigitalKnowBot.Bots.Cards.WelcomeCard">
+            <summary>
+            This class represents the welcome card that would be shown to the user.
+            </summary>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Bots.Cards.WelcomeCard.GetCard(System.String)">
+            <summary>
+            This method will generate the exact card to the render.
+            </summary>
+            <param name="welcomeText">The welcoming text to show.</param>
+            <returns>An attachment to be appended to a message.</returns>
         </member>
         <member name="T:YICG.Apps.Teams.DigitalKnowBot.Controllers.BotController">
             <summary>
