@@ -16,9 +16,33 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
     /// </summary>
     public class GangaGameBot : ActivityHandler
     {
-        private const string ConversationTypePersonal = "personal";
+        /// <summary>
+        /// This method always executes whenever a message is sent to the bot, or a message reaction is posted.
+        /// </summary>
+        /// <param name="turnContext">The current turn in the conversation.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>A unit of execution.</returns>
+        public override Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = default)
+        {
+            // Conduct a null check on the turnContext - do we have some data in the conversation turn?
+            if (turnContext is null)
+            {
+                throw new ArgumentNullException(nameof(turnContext));
+            }
 
-        private const string ConversationTypeChannel = "channel";
+            switch (turnContext.Activity.Type)
+            {
+                case ActivityTypes.Message:
+                    return this.OnMessageActivityAsync(new DelegatingTurnContext<IMessageActivity>(turnContext), cancellationToken);
+                case ActivityTypes.ConversationUpdate:
+                    return this.OnConversationUpdateActivityAsync(new DelegatingTurnContext<IConversationUpdateActivity>(turnContext), cancellationToken);
+                default:
+                    turnContext.SendActivityAsync(MessageFactory.Text("I have no clue what you are saying, please try again!"), cancellationToken);
+                    break;
+            }
+
+            return base.OnTurnAsync(turnContext, cancellationToken);
+        }
 
         /// <summary>
         /// This method executes whenever there is a new message coming into the bot.
@@ -32,6 +56,8 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
             {
                 throw new ArgumentNullException(nameof(turnContext));
             }
+
+            await this.SendTypingIndicatorAsync(turnContext);
 
             var replyText = $"Echo: {turnContext.Activity.Text}";
             await turnContext.SendActivityAsync(MessageFactory.Text(replyText, replyText), cancellationToken);
@@ -63,6 +89,20 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
                 {
                     await turnContext.SendActivityAsync(MessageFactory.Text(welcomeText, welcomeText), cancellationToken);
                 }
+            }
+        }
+
+        private async Task SendTypingIndicatorAsync(ITurnContext turnContext)
+        {
+            try
+            {
+                var typingActivity = turnContext.Activity.CreateReply();
+                typingActivity.Type = ActivityTypes.Typing;
+                await turnContext.SendActivityAsync(typingActivity);
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
     }
