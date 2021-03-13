@@ -21,6 +21,14 @@
             This class is our main bot class that will execute all of the functionality.
             </summary>
         </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Bots.GangaGameBot.OnTurnAsync(Microsoft.Bot.Builder.ITurnContext,System.Threading.CancellationToken)">
+            <summary>
+            This method always executes whenever a message is sent to the bot, or a message reaction is posted.
+            </summary>
+            <param name="turnContext">The current turn in the conversation.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>A unit of execution.</returns>
+        </member>
         <member name="M:YICG.Apps.Teams.DigitalKnowBot.Bots.GangaGameBot.OnMessageActivityAsync(Microsoft.Bot.Builder.ITurnContext{Microsoft.Bot.Schema.IMessageActivity},System.Threading.CancellationToken)">
             <summary>
             This method executes whenever there is a new message coming into the bot.

@@ -149,6 +149,51 @@
             Gets or sets the score threshold.
             </summary>
         </member>
+        <member name="T:YICG.Apps.Teams.DigitalKnowBot.Common.Models.Constants">
+            <summary>
+            This class defines all the constants that the Ganga Game Bot is required to use.
+            </summary>
+        </member>
+        <member name="F:YICG.Apps.Teams.DigitalKnowBot.Common.Models.Constants.ConversationTypePersonal">
+            <summary>
+            This constant represents a conversation in the personal scope (1:1 with the bot).
+            </summary>
+        </member>
+        <member name="F:YICG.Apps.Teams.DigitalKnowBot.Common.Models.Constants.ConversationTypeChannel">
+            <summary>
+            This constant represents a conversation in a Team (many users + bot).
+            </summary>
+        </member>
+        <member name="F:YICG.Apps.Teams.DigitalKnowBot.Common.Models.Constants.TakeATourPersonalCommand">
+            <summary>
+            This constant represents the command to be taking a tour in the personal scope.
+            </summary>
+        </member>
+        <member name="F:YICG.Apps.Teams.DigitalKnowBot.Common.Models.Constants.AskAnExpertPersonalCommand">
+            <summary>
+            This constant represents the command to ask an expert in the personal scope.
+            </summary>
+        </member>
+        <member name="F:YICG.Apps.Teams.DigitalKnowBot.Common.Models.Constants.ShareFeedbackPersonalCommand">
+            <summary>
+            This constant represents the command to share feedback in the personal scope.
+            </summary>
+        </member>
+        <member name="F:YICG.Apps.Teams.DigitalKnowBot.Common.Models.Constants.AskAnExpertFromCard">
+            <summary>
+            This constant represents the command to ask an expert from a card.
+            </summary>
+        </member>
+        <member name="F:YICG.Apps.Teams.DigitalKnowBot.Common.Models.Constants.ShareFeedbackFromCard">
+            <summary>
+            This constant represents the command to share feedback from a card.
+            </summary>
+        </member>
+        <member name="F:YICG.Apps.Teams.DigitalKnowBot.Common.Models.Constants.TeamTourChannelCommand">
+            <summary>
+            This constant represents the command to take a tour in the team scope.
+            </summary>
+        </member>
         <member name="T:YICG.Apps.Teams.DigitalKnowBot.Common.Models.FeedbackRating">
             <summary>
             Represents the user rating given for the feedback.
