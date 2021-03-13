@@ -11,6 +11,7 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
     using Microsoft.Bot.Builder;
     using Microsoft.Bot.Schema;
     using YICG.Apps.Teams.DigitalKnowBot.Bots.Cards;
+    using YICG.Apps.Teams.DigitalKnowBot.Common.Models;
 
     /// <summary>
     /// This class is our main bot class that will execute all of the functionality.
@@ -58,10 +59,31 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
                 throw new ArgumentNullException(nameof(turnContext));
             }
 
-            await this.SendTypingIndicatorAsync(turnContext);
+            try
+            {
+                var message = turnContext.Activity;
+                await this.SendTypingIndicatorAsync(turnContext);
 
-            var replyText = $"Echo: {turnContext.Activity.Text}";
-            await turnContext.SendActivityAsync(MessageFactory.Text(replyText, replyText), cancellationToken);
+                switch (message.Conversation.ConversationType)
+                {
+                    case Constants.ConversationTypePersonal:
+                        break;
+                    case Constants.ConversationTypeChannel:
+                        break;
+                    default:
+                        await turnContext.SendActivityAsync(MessageFactory.Text($"I cannot understand the {message.Conversation.ConversationType} conversation!"), cancellationToken);
+                        break;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            // await this.SendTypingIndicatorAsync(turnContext);
+
+            // var replyText = $"Echo: {turnContext.Activity.Text}";
+            // await turnContext.SendActivityAsync(MessageFactory.Text(replyText, replyText), cancellationToken);
         }
 
         /// <summary>
