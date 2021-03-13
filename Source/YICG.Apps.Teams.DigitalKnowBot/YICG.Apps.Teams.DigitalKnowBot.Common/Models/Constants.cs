@@ -23,5 +23,30 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Common.Models
         /// This constant represents the command to be taking a tour in the personal scope.
         /// </summary>
         public const string TakeATourPersonalCommand = "take a tour";
+
+        /// <summary>
+        /// This constant represents the command to ask an expert in the personal scope.
+        /// </summary>
+        public const string AskAnExpertPersonalCommand = "ask an expert";
+
+        /// <summary>
+        /// This constant represents the command to share feedback in the personal scope.
+        /// </summary>
+        public const string ShareFeedbackPersonalCommand = "share feedback";
+
+        /// <summary>
+        /// This constant represents the command to ask an expert from a card.
+        /// </summary>
+        public const string AskAnExpertFromCard = "ask an expert";
+
+        /// <summary>
+        /// This constant represents the command to share feedback from a card.
+        /// </summary>
+        public const string ShareFeedbackFromCard = "share feedback";
+
+        /// <summary>
+        /// This constant represents the command to take a tour in the team scope.
+        /// </summary>
+        public const string TeamTourChannelCommand = "team tour";
     }
 }
