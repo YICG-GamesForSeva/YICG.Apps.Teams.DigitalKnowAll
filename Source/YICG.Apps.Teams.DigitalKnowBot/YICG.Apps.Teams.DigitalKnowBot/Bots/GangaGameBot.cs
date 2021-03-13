@@ -1,4 +1,4 @@
-// <copyright file="GangaGameBot.cs" company="Games For Seva">
+﻿// <copyright file="GangaGameBot.cs" company="Games For Seva">
 // Copyright (c) Games For Seva. All rights reserved.
 // </copyright>
 
@@ -67,8 +67,10 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
                 switch (message.Conversation.ConversationType)
                 {
                     case Constants.ConversationTypePersonal:
+                        await this.OnMessageActivityInPersonalChatAsync(message, turnContext, cancellationToken);
                         break;
                     case Constants.ConversationTypeChannel:
+                        await this.OnMessageActivityInChannelChatAsync(message, turnContext, cancellationToken);
                         break;
                     default:
                         await turnContext.SendActivityAsync(MessageFactory.Text($"I cannot understand the {message.Conversation.ConversationType} conversation!"), cancellationToken);
@@ -105,7 +107,7 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
                 throw new ArgumentNullException(nameof(turnContext));
             }
 
-            var welcomeText = "Hi! I�m the Ganga River Rescue GameBot! If you want to know more about what I do, click on Take a tour below. Ask me a question about Ganga River Rescue, and I will do my best to help!";
+            var welcomeText = "Hi! I’m the Ganga River Rescue GameBot! If you want to know more about what I do, click on Take a tour below. Ask me a question about Ganga River Rescue, and I will do my best to help!";
             foreach (var member in membersAdded)
             {
                 if (member.Id != turnContext.Activity.Recipient.Id)
@@ -129,6 +131,63 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
             catch (Exception)
             {
                 throw;
+            }
+        }
+
+        private async Task OnMessageActivityInPersonalChatAsync(IMessageActivity message, ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
+        {
+            if (message is null)
+            {
+                throw new ArgumentNullException(nameof(message));
+            }
+
+            if (turnContext is null)
+            {
+                throw new ArgumentNullException(nameof(turnContext));
+            }
+
+            string messageText = (message.Text ?? string.Empty).Trim().ToLower();
+
+            switch (messageText)
+            {
+                case Constants.TakeATourPersonalCommand:
+                    await turnContext.SendActivityAsync(MessageFactory.Text("Hang on! I'm working on the tour, will give it soon!"), cancellationToken);
+                    break;
+                case Constants.AskAnExpertFromCard:
+                    await turnContext.SendActivityAsync(MessageFactory.Text("Pump the breaks! You need help already?! I'll give it to you!"), cancellationToken);
+                    break;
+                case Constants.ShareFeedbackPersonalCommand:
+                    await turnContext.SendActivityAsync(MessageFactory.Text("You're on telling me! Really? How rude... 🙄"), cancellationToken);
+                    break;
+                default:
+                    var replyText = $"Echo: {messageText}";
+                    await turnContext.SendActivityAsync(MessageFactory.Text(replyText, replyText), cancellationToken);
+                    break;
+            }
+        }
+
+        private async Task OnMessageActivityInChannelChatAsync(IMessageActivity message, ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
+        {
+            if (message is null)
+            {
+                throw new ArgumentNullException(nameof(message));
+            }
+
+            if (turnContext is null)
+            {
+                throw new ArgumentNullException(nameof(turnContext));
+            }
+
+            string text = (message.Text ?? string.Empty).Trim().ToLower();
+
+            switch (text)
+            {
+                case Constants.TeamTourChannelCommand:
+                    await turnContext.SendActivityAsync(MessageFactory.Text("Cool, you want to see how I help team. I'll show you in a minute!"), cancellationToken);
+                    break;
+                default:
+                    await turnContext.SendActivityAsync(MessageFactory.Text("Ooooook, my 🤖 🧠 can't understand! SORRY not sorry."), cancellationToken);
+                    break;
             }
         }
     }
