@@ -29,6 +29,14 @@
             <param name="cancellationToken">The cancellation token.</param>
             <returns>A unit of execution.</returns>
         </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Bots.GangaGameBot.OnConversationUpdateActivityAsync(Microsoft.Bot.Builder.ITurnContext{Microsoft.Bot.Schema.IConversationUpdateActivity},System.Threading.CancellationToken)">
+            <summary>
+            This method executes whenever the bot is installed in a personal scope, or the bot has been added to a team.
+            </summary>
+            <param name="turnContext">The current turn of the conversation.</param>
+            <param name="cancellationToken">A signal of sorts to notify when the conversation turn is done.</param>
+            <returns>A unit of execution known as a <see cref="T:System.Threading.Tasks.Task"/>.</returns>
+        </member>
         <member name="M:YICG.Apps.Teams.DigitalKnowBot.Bots.GangaGameBot.OnMessageActivityAsync(Microsoft.Bot.Builder.ITurnContext{Microsoft.Bot.Schema.IMessageActivity},System.Threading.CancellationToken)">
             <summary>
             This method executes whenever there is a new message coming into the bot.

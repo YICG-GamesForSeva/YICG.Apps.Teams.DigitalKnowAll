@@ -46,6 +46,45 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
         }
 
         /// <summary>
+        /// This method executes whenever the bot is installed in a personal scope, or the bot has been added to a team.
+        /// </summary>
+        /// <param name="turnContext">The current turn of the conversation.</param>
+        /// <param name="cancellationToken">A signal of sorts to notify when the conversation turn is done.</param>
+        /// <returns>A unit of execution known as a <see cref="Task"/>.</returns>
+        protected override async Task OnConversationUpdateActivityAsync(ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken)
+        {
+            if (turnContext is null)
+            {
+                throw new ArgumentNullException(nameof(turnContext));
+            }
+
+            try
+            {
+                var activity = turnContext.Activity;
+
+                if (activity.MembersAdded?.Count > 0)
+                {
+                    switch (activity.Conversation.ConversationType)
+                    {
+                        case Constants.ConversationTypePersonal:
+                            await this.OnMembersAddedToPersonalChatAsync(activity.MembersAdded, turnContext, cancellationToken);
+                            break;
+                        case Constants.ConversationTypeChannel:
+                            await this.OnMembersAddedToTeamAsync(activity.MembersAdded, turnContext, cancellationToken);
+                            break;
+                        default:
+                            await turnContext.SendActivityAsync(MessageFactory.Text("I do not know what's going on...help!"), cancellationToken);
+                            break;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
         /// This method executes whenever there is a new message coming into the bot.
         /// </summary>
         /// <param name="turnContext">The current turn/execution flow.</param>
@@ -180,6 +219,16 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
                     await turnContext.SendActivityAsync(MessageFactory.Text("Ooook... My 🤖 🧠 cannot understand!!!"), cancellationToken);
                     break;
             }
+        }
+
+        private async Task OnMembersAddedToTeamAsync(IList<ChannelAccount> membersAdded, ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken)
+        {
+            await turnContext.SendActivityAsync(MessageFactory.Text("Hello there, this message runs because I'm added to a team"), cancellationToken);
+        }
+
+        private async Task OnMembersAddedToPersonalChatAsync(IList<ChannelAccount> membersAdded, ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken)
+        {
+            await turnContext.SendActivityAsync(MessageFactory.Text("Hello there, this means that I am added in personal scope!"), cancellationToken);
         }
     }
 }
