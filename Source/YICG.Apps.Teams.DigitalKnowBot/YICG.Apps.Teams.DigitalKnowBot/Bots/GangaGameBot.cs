@@ -220,5 +220,15 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
                     break;
             }
         }
+
+        private async Task OnMembersAddedToTeamAsync(IList<ChannelAccount> membersAdded, ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken)
+        {
+            await turnContext.SendActivityAsync(MessageFactory.Text("Hello there, this message runs because I'm added to a team"), cancellationToken);
+        }
+
+        private async Task OnMembersAddedToPersonalChatAsync(IList<ChannelAccount> membersAdded, ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken)
+        {
+            await turnContext.SendActivityAsync(MessageFactory.Text("Hello there, this means that I am added in personal scope!"), cancellationToken);
+        }
     }
 }
