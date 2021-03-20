@@ -61,6 +61,60 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to If I return an answer which is not what you are looking for, you can always ask for more help!.
+        /// </summary>
+        public static string AskAGuideContent {
+            get {
+                return ResourceManager.GetString("AskAGuideContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ask a guide.
+        /// </summary>
+        public static string AskAGuideHeader {
+            get {
+                return ResourceManager.GetString("AskAGuideHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can ask a question about the game _Ganga: River Rescue_ and I will do my best to answer it 👍.
+        /// </summary>
+        public static string FunctionCardContent {
+            get {
+                return ResourceManager.GetString("FunctionCardContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ask a question.
+        /// </summary>
+        public static string FunctionCardHeader {
+            get {
+                return ResourceManager.GetString("FunctionCardHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I encourage you to share more feedback about how I am doing, so that I can better help you in the near future.
+        /// </summary>
+        public static string ShareFeedbackContent {
+            get {
+                return ResourceManager.GetString("ShareFeedbackContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Share feedback.
+        /// </summary>
+        public static string ShareFeedbackHeader {
+            get {
+                return ResourceManager.GetString("ShareFeedbackHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Take a tour.
         /// </summary>
         public static string TakeATourButtonText {
@@ -79,7 +133,7 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 🙏.
+        ///   Looks up a localized string similar to Namaste 🙏.
         /// </summary>
         public static string UserWelcomeCardHeader {
             get {

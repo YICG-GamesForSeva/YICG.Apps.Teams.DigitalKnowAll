@@ -20,6 +20,17 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
     /// </summary>
     public class GangaGameBot : ActivityHandler
     {
+        private readonly string appBaseUri;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GangaGameBot"/> class.
+        /// </summary>
+        /// <param name="appBaseUri">Application Base URL.</param>
+        public GangaGameBot(string appBaseUri)
+        {
+            this.appBaseUri = appBaseUri;
+        }
+
         /// <summary>
         /// This method always executes whenever a message is sent to the bot, or a message reaction is posted.
         /// </summary>
@@ -155,7 +166,8 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
             switch (messageText)
             {
                 case Constants.TakeATourPersonalCommand:
-                    await turnContext.SendActivityAsync(MessageFactory.Text("Hang on! I'm working on the tour, will give it soon!"), cancellationToken);
+                    var userTourCards = TourCarousel.GetUserTourCards(this.appBaseUri);
+                    await turnContext.SendActivityAsync(MessageFactory.Carousel(userTourCards), cancellationToken);
                     break;
                 case Constants.AskAnExpertPersonalCommand:
                     await turnContext.SendActivityAsync(MessageFactory.Text("Pump the breaks! You need help already?! I'll get it to you!"), cancellationToken);

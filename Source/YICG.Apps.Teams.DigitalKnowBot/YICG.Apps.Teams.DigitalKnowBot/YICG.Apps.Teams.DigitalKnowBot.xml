@@ -21,6 +21,12 @@
             This class is our main bot class that will execute all of the functionality.
             </summary>
         </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Bots.GangaGameBot.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:YICG.Apps.Teams.DigitalKnowBot.Bots.GangaGameBot"/> class.
+            </summary>
+            <param name="appBaseUri">Application Base URL.</param>
+        </member>
         <member name="M:YICG.Apps.Teams.DigitalKnowBot.Bots.GangaGameBot.OnTurnAsync(Microsoft.Bot.Builder.ITurnContext,System.Threading.CancellationToken)">
             <summary>
             This method always executes whenever a message is sent to the bot, or a message reaction is posted.
@@ -44,6 +50,18 @@
             <param name="turnContext">The current turn/execution flow.</param>
             <param name="cancellationToken">The cancellation token which propogates to signal execution completion.</param>
             <returns>A unit of execution that represents an asynchronous operation.</returns>
+        </member>
+        <member name="T:YICG.Apps.Teams.DigitalKnowBot.Cards.TourCarousel">
+            <summary>
+            This class is responsible to generate the tour carousel in the personal and team scopes.
+            </summary>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Cards.TourCarousel.GetUserTourCards(System.String)">
+            <summary>
+            This method generates the user tour carousel in personal scope.
+            </summary>
+            <param name="appBaseUri">Application Base URI.</param>
+            <returns>A list of cards to render as the user tour.</returns>
         </member>
         <member name="T:YICG.Apps.Teams.DigitalKnowBot.Cards.WelcomeCard">
             <summary>
@@ -113,6 +131,36 @@
               resource lookups using this strongly typed resource class.
             </summary>
         </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.AskAGuideContent">
+            <summary>
+              Looks up a localized string similar to If I return an answer which is not what you are looking for, you can always ask for more help!.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.AskAGuideHeader">
+            <summary>
+              Looks up a localized string similar to Ask a guide.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.FunctionCardContent">
+            <summary>
+              Looks up a localized string similar to You can ask a question about the game _Ganga: River Rescue_ and I will do my best to answer it 👍.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.FunctionCardHeader">
+            <summary>
+              Looks up a localized string similar to Ask a question.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.ShareFeedbackContent">
+            <summary>
+              Looks up a localized string similar to I encourage you to share more feedback about how I am doing, so that I can better help you in the near future.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.ShareFeedbackHeader">
+            <summary>
+              Looks up a localized string similar to Share feedback.
+            </summary>
+        </member>
         <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.TakeATourButtonText">
             <summary>
               Looks up a localized string similar to Take a tour.
@@ -125,7 +173,7 @@
         </member>
         <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.UserWelcomeCardHeader">
             <summary>
-              Looks up a localized string similar to 🙏.
+              Looks up a localized string similar to Namaste 🙏.
             </summary>
         </member>
         <member name="T:YICG.Apps.Teams.DigitalKnowBot.Services.IQnAMakerFactory">
