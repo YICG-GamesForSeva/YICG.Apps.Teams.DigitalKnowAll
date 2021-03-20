@@ -4,9 +4,9 @@
 
 namespace YICG.Apps.Teams.DigitalKnowBot.Cards
 {
+    using System.Collections.Generic;
     using AdaptiveCards;
     using Microsoft.Bot.Schema;
-    using System.Collections.Generic;
     using YICG.Apps.Teams.DigitalKnowBot.Common.Models;
     using YICG.Apps.Teams.DigitalKnowBot.Properties;
 
@@ -18,10 +18,10 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Cards
         /// <summary>
         /// This method generates the welcome card.
         /// </summary>
-        /// <param name="cardHeader"></param>
-        /// <param name="cardContext"></param>
+        /// <param name="cardHeader">This is the card header.</param>
+        /// <param name="cardContent">This the card content.</param>
         /// <returns>An attachment to the message.</returns>
-        public static Attachment GetCard(string cardHeader, string cardContext)
+        public static Attachment GetCard(string cardHeader, string cardContent)
         {
             AdaptiveCard userWelcomeCard = new AdaptiveCard("1.0")
             {
