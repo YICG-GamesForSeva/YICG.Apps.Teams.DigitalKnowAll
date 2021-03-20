@@ -110,7 +110,43 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
                 }
             }
         }
+        // <summary>
+        // This method executes whenever the bot is installed in a personal scope, or the bot has been added to a team.
+        // 
+        // 
+        // <returns>A unit of execution known as a <see cref = "task" />. </returns>
+        protected override async Task OnConversationUpdateActivityAsync(ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken)
+        {
+            if (turnContext is null)
+            {
+                throw new ArgumentException(nameof(turnContext));
+            }
+            try
+            {
+                var activity = turnContext.Activity;
 
+                if (activity.MembersAdded?.Count > 0)
+                {
+                    switch (activity.Conversation.ConversationType)
+                    {
+                        case Constants.ConversationTypePersonal:
+                            await this.OnMembersAddedToPersonalChatAsync(activity.MembersAdded, turnContext, CancellationToken);
+                            break;
+                        case Constants.ConversationTypeChannel:
+                            await this.OnMembersAddedToTeamAsync(activity.MembersAdded, turnContext, CancellationToken);
+                            break;
+                        default:
+                            await turnContext.SendActivityAsync(MessageFactory.Text("I do not know what is going on...help!"), CancellationToken);
+                            break;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                break;
+            }
+
+        }
         private async Task SendTypingIndicatorAsync(ITurnContext turnContext)
         {
             try
