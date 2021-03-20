@@ -1,24 +1,32 @@
 ﻿// <copyright file="GangaGameBot.cs" company="Games For Seva">
 // Copyright (c) Games For Seva. All rights reserved.
 // </copyright>
+
 namespace YICG.Apps.Teams.DigitalKnowBot.Bots
 {
     using System;
     using System.Collections.Generic;
-    using System.Threading;
     using System.Linq;
+    using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.Bot.Builder;
     using Microsoft.Bot.Schema;
+    using YICG.Apps.Teams.DigitalKnowBot.Cards;
     using YICG.Apps.Teams.DigitalKnowBot.Common.Models;
     using YICG.Apps.Teams.DigitalKnowBot.Properties;
-    using YICG.Apps.Teams.DigitalKnowBot.Cards;
 
     /// <summary>
     /// This class is our main bot class that will execute all of the functionality.
     /// </summary>
     public class GangaGameBot : ActivityHandler
     {
+        private readonly string appBaseUri;
+
+        public GangaGameBot(string appBaseUri)
+        {
+            this.appBaseUri = appBaseUri;
+        }
+
         /// <summary>
         /// This method always executes whenever a message is sent to the bot, or a message reaction is posted.
         /// </summary>
@@ -149,7 +157,8 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
             switch (messageText)
             {
                 case Constants.TakeATourPersonalCommand:
-                    await turnContext.SendActivityAsync(MessageFactory.Text("Hang on! I'm working on the tour, will give it soon!"), cancellationToken);
+                    var userTourCards = TourCarousel.GetUserTourCards(this.appBaseUri);
+                    await turnContext.SendActivityAsync(MessageFactory.Carousel(userTourCards), cancellationToken);
                     break;
                 case Constants.AskAnExpertPersonalCommand:
                     await turnContext.SendActivityAsync(MessageFactory.Text("Pump the breaks! You need help already?! I'll get it to you!"), cancellationToken);

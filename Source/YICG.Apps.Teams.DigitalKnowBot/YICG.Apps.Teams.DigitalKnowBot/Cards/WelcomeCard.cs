@@ -1,4 +1,8 @@
-﻿namespace YICG.Apps.Teams.DigitalKnowBot.Cards
+﻿// <copyright file="WelcomeCard.cs" company="Games For Seva">
+// Copyright (c) Games For Seva. All rights reserved.
+// </copyright>
+
+namespace YICG.Apps.Teams.DigitalKnowBot.Cards
 {
     using System.Collections.Generic;
     using AdaptiveCards;
@@ -6,6 +10,9 @@
     using YICG.Apps.Teams.DigitalKnowBot.Common.Models;
     using YICG.Apps.Teams.DigitalKnowBot.Properties;
 
+    /// <summary>
+    /// This is the class that generates the welcome in the personal scope.
+    /// </summary>
     public class WelcomeCard
     {
         /// <summary>
