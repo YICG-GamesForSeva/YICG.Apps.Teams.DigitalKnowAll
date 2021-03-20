@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AdaptiveCards" Version="2.6.0" />
     <PackageReference Include="Microsoft.ApplicationInsights" Version="2.17.0" />
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.17.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.1" />
@@ -35,10 +36,25 @@
     <ProjectReference Include="..\YICG.Apps.Teams.DigitalKnowBot.Common\YICG.Apps.Teams.DigitalKnowBot.Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Properties\Strings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
     <ItemGroup>
     <Content Update="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="Properties\Strings.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
 
 </Project>
