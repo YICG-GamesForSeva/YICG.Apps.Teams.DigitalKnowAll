@@ -115,6 +115,15 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Team tour.
+        /// </summary>
+        public static string TakeATeamTourButtonText {
+            get {
+                return ResourceManager.GetString("TakeATeamTourButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Take a tour!.
         /// </summary>
         public static string TakeATourButtonText {
@@ -133,11 +142,20 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to _Aloha_ 👋👋👋.
+        ///   Looks up a localized string similar to _Namaste_ 👋👋👋.
         /// </summary>
         public static string UserWelcomeCardHeader {
             get {
                 return ResourceManager.GetString("UserWelcomeCardHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Namaste team! I&apos;m going to help you with understanding the tickets, assigning them, and connecting you to the knowledge seekers (the end users...). To find out more, click on _Take a tour_ below..
+        /// </summary>
+        public static string WelcomeTeamCardContent {
+            get {
+                return ResourceManager.GetString("WelcomeTeamCardContent", resourceCulture);
             }
         }
     }

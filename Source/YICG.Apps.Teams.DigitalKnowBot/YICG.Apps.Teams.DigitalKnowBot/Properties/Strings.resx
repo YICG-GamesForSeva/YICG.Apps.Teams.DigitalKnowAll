@@ -135,6 +135,9 @@
   <data name="ShareFeedbackHeader" xml:space="preserve">
     <value>Share Feedback</value>
   </data>
+  <data name="TakeATeamTourButtonText" xml:space="preserve">
+    <value>Team tour</value>
+  </data>
   <data name="TakeATourButtonText" xml:space="preserve">
     <value>Take a tour!</value>
     <comment>Click the take a tour button.</comment>
@@ -144,7 +147,10 @@
     <comment>Introduction of the bot.</comment>
   </data>
   <data name="UserWelcomeCardHeader" xml:space="preserve">
-    <value>_Aloha_ 👋👋👋</value>
+    <value>_Namaste_ 👋👋👋</value>
     <comment>Our header</comment>
+  </data>
+  <data name="WelcomeTeamCardContent" xml:space="preserve">
+    <value>Namaste team! I'm going to help you with understanding the tickets, assigning them, and connecting you to the knowledge seekers (the end users...). To find out more, click on _Take a tour_ below.</value>
   </data>
 </root>
