@@ -21,6 +21,12 @@
             This class is our main bot class that will execute all of the functionality.
             </summary>
         </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Bots.GangaGameBot.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:YICG.Apps.Teams.DigitalKnowBot.Bots.GangaGameBot"/> class.
+            </summary>
+            <param name="appBaseUri">Application Base URL.</param>
+        </member>
         <member name="M:YICG.Apps.Teams.DigitalKnowBot.Bots.GangaGameBot.OnTurnAsync(Microsoft.Bot.Builder.ITurnContext,System.Threading.CancellationToken)">
             <summary>
             This method always executes whenever a message is sent to the bot, or a message reaction is posted.
@@ -45,14 +51,30 @@
             <param name="cancellationToken">The cancellation token which propogates to signal execution completion.</param>
             <returns>A unit of execution that represents an asynchronous operation.</returns>
         </member>
-        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Bots.GangaGameBot.OnMembersAddedAsync(System.Collections.Generic.IList{Microsoft.Bot.Schema.ChannelAccount},Microsoft.Bot.Builder.ITurnContext{Microsoft.Bot.Schema.IConversationUpdateActivity},System.Threading.CancellationToken)">
+        <member name="T:YICG.Apps.Teams.DigitalKnowBot.Cards.TourCarousel">
             <summary>
-            This method will execute whenever there is a new member added to the conversation.
+            This class is responsible to generate the tour carousel in the personal and team scopes.
             </summary>
-            <param name="membersAdded">The list of Channel accounts that are being added to the conversation.</param>
-            <param name="turnContext">The current turn/execution flow.</param>
-            <param name="cancellationToken">The cancellation token which propogates to signal execution completion.</param>
-            <returns>A unit of execution that represents an asynchronous operation.</returns>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Cards.TourCarousel.GetUserTourCards(System.String)">
+            <summary>
+            This method generates the user tour carousel in the personale scope.
+            </summary>
+            <param name="appBaseUri">Application based Uri.</param>
+            <returns>A list of cards to render as the user tour.</returns>
+        </member>
+        <member name="T:YICG.Apps.Teams.DigitalKnowBot.Cards.WelcomeCard">
+            <summary>
+            This class is for the welcome card in the personal scope.
+            </summary>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Cards.WelcomeCard.GetCard(System.String,System.String)">
+            <summary>
+            This method generates the welcome card.
+            </summary>
+            <param name="cardHeader">This is the card header.</param>
+            <param name="cardContent">This the card content.</param>
+            <returns>An attachment to the message.</returns>
         </member>
         <member name="T:YICG.Apps.Teams.DigitalKnowBot.Controllers.BotController">
             <summary>
@@ -92,6 +114,67 @@
             </summary>
             <param name="args">Project specific arguments.</param>
             <returns>A type of host builder middleware.</returns>
+        </member>
+        <member name="T:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.AskAGuideContent">
+            <summary>
+              Looks up a localized string similar to If I return an answer which is not what you&apos;re looking for (in other words, BAD) you can always ask an expert to help..
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.AskAGuideHeader">
+            <summary>
+              Looks up a localized string similar to Ask an expert.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.FunctionCardContent">
+            <summary>
+              Looks up a localized string similar to You can ask a question about this game, _Ganga River Rescue_ and I&apos;ll do my best to answer it!.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.FunctionCardHeader">
+            <summary>
+              Looks up a localized string similar to Ask a question ❓❓❓.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.ShareFeedbackContent">
+            <summary>
+              Looks up a localized string similar to I encourage you to share more feedback about how I&apos;m doing (be kind please), so that I can help you better in the future..
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.ShareFeedbackHeader">
+            <summary>
+              Looks up a localized string similar to Share Feedback.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.TakeATourButtonText">
+            <summary>
+              Looks up a localized string similar to Take a tour!.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.UserWelcomeCardContent">
+            <summary>
+              Looks up a localized string similar to Hi! I’m the Ganga River Rescue Bot! If you want to know more about what I do, click on _Take a tour_ below..
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.UserWelcomeCardHeader">
+            <summary>
+              Looks up a localized string similar to _Aloha_ 👋👋👋.
+            </summary>
         </member>
         <member name="T:YICG.Apps.Teams.DigitalKnowBot.Services.IQnAMakerFactory">
             <summary>
