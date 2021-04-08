@@ -21,11 +21,12 @@
             This class is our main bot class that will execute all of the functionality.
             </summary>
         </member>
-        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Bots.GangaGameBot.#ctor(System.String)">
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Bots.GangaGameBot.#ctor(System.String,Microsoft.Bot.Connector.Authentication.MicrosoftAppCredentials)">
             <summary>
             Initializes a new instance of the <see cref="T:YICG.Apps.Teams.DigitalKnowBot.Bots.GangaGameBot"/> class.
             </summary>
             <param name="appBaseUri">Application Base URL.</param>
+            <param name="microsoftAppCredentials">The Microsoft Application Credentials.</param>
         </member>
         <member name="M:YICG.Apps.Teams.DigitalKnowBot.Bots.GangaGameBot.OnTurnAsync(Microsoft.Bot.Builder.ITurnContext,System.Threading.CancellationToken)">
             <summary>
@@ -63,6 +64,13 @@
             <param name="appBaseUri">Application based Uri.</param>
             <returns>A list of cards to render as the user tour.</returns>
         </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Cards.TourCarousel.GetTeamTourCards(System.String)">
+            <summary>
+            This method will generate the team tour carousel.
+            </summary>
+            <param name="appBaseUri">The local address of the bot.</param>
+            <returns>A type of <see cref="T:System.Collections.Generic.IEnumerable`1"/> which will allow for the carousel tour to be shown.</returns>
+        </member>
         <member name="T:YICG.Apps.Teams.DigitalKnowBot.Cards.WelcomeCard">
             <summary>
             This class is for the welcome card in the personal scope.
@@ -75,6 +83,17 @@
             <param name="cardHeader">This is the card header.</param>
             <param name="cardContent">This the card content.</param>
             <returns>An attachment to the message.</returns>
+        </member>
+        <member name="T:YICG.Apps.Teams.DigitalKnowBot.Cards.WelcomeTeamCard">
+            <summary>
+            This class is for generating the welcome card to be sent in a team.
+            </summary>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Cards.WelcomeTeamCard.GetCard">
+            <summary>
+            This method will render a welcome card after the bot has been installed to a team.
+            </summary>
+            <returns>An attachment to append to a message.</returns>
         </member>
         <member name="T:YICG.Apps.Teams.DigitalKnowBot.Controllers.BotController">
             <summary>
@@ -141,6 +160,16 @@
               Looks up a localized string similar to Ask an expert.
             </summary>
         </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.EndUserCardContent">
+            <summary>
+              Looks up a localized string similar to Maybe me sending out updates does help, but what can close a ticket the fastest? You being able to message the end user yourself - this way we all can do our part to help the users!.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.EndUserCardHeader">
+            <summary>
+              Looks up a localized string similar to Chat with Users.
+            </summary>
+        </member>
         <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.FunctionCardContent">
             <summary>
               Looks up a localized string similar to You can ask a question about this game, _Ganga River Rescue_ and I&apos;ll do my best to answer it!.
@@ -148,7 +177,17 @@
         </member>
         <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.FunctionCardHeader">
             <summary>
-              Looks up a localized string similar to Ask a question ❓❓❓.
+              Looks up a localized string similar to Ask a question.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.NotificationCardContent">
+            <summary>
+              Looks up a localized string similar to It is my job to alert you whenever there are users requesting for expert help!.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.NotificationCardHeader">
+            <summary>
+              Looks up a localized string similar to Be Notified.
             </summary>
         </member>
         <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.ShareFeedbackContent">
@@ -161,9 +200,24 @@
               Looks up a localized string similar to Share Feedback.
             </summary>
         </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.TakeATeamTourButtonText">
+            <summary>
+              Looks up a localized string similar to Team tour.
+            </summary>
+        </member>
         <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.TakeATourButtonText">
             <summary>
               Looks up a localized string similar to Take a tour!.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.TicketSystemCardContent">
+            <summary>
+              Looks up a localized string similar to As tickets come in, you have the ability to assign tickets to yourself. While you work on a ticket, I will alert the end user who requests your help of the latest updates.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.TicketSystemCardHeader">
+            <summary>
+              Looks up a localized string similar to Ticket System.
             </summary>
         </member>
         <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.UserWelcomeCardContent">
@@ -173,7 +227,12 @@
         </member>
         <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.UserWelcomeCardHeader">
             <summary>
-              Looks up a localized string similar to _Aloha_ 👋👋👋.
+              Looks up a localized string similar to _Namaste_ 👋👋👋.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.WelcomeTeamCardContent">
+            <summary>
+              Looks up a localized string similar to Namaste team! I&apos;m going to help you with understanding the tickets, assigning them, and connecting you to the knowledge seekers (the end users...). To find out more, click on _Take a tour_ below..
             </summary>
         </member>
         <member name="T:YICG.Apps.Teams.DigitalKnowBot.Services.IQnAMakerFactory">

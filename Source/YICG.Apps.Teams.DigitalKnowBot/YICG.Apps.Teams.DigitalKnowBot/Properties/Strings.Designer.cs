@@ -79,6 +79,24 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Maybe me sending out updates does help, but what can close a ticket the fastest? You being able to message the end user yourself - this way we all can do our part to help the users!.
+        /// </summary>
+        public static string EndUserCardContent {
+            get {
+                return ResourceManager.GetString("EndUserCardContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chat with Users.
+        /// </summary>
+        public static string EndUserCardHeader {
+            get {
+                return ResourceManager.GetString("EndUserCardHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You can ask a question about this game, _Ganga River Rescue_ and I&apos;ll do my best to answer it!.
         /// </summary>
         public static string FunctionCardContent {
@@ -88,11 +106,29 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ask a question ❓❓❓.
+        ///   Looks up a localized string similar to Ask a question.
         /// </summary>
         public static string FunctionCardHeader {
             get {
                 return ResourceManager.GetString("FunctionCardHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to It is my job to alert you whenever there are users requesting for expert help!.
+        /// </summary>
+        public static string NotificationCardContent {
+            get {
+                return ResourceManager.GetString("NotificationCardContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Be Notified.
+        /// </summary>
+        public static string NotificationCardHeader {
+            get {
+                return ResourceManager.GetString("NotificationCardHeader", resourceCulture);
             }
         }
         
@@ -129,6 +165,24 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Properties {
         public static string TakeATourButtonText {
             get {
                 return ResourceManager.GetString("TakeATourButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to As tickets come in, you have the ability to assign tickets to yourself. While you work on a ticket, I will alert the end user who requests your help of the latest updates.
+        /// </summary>
+        public static string TicketSystemCardContent {
+            get {
+                return ResourceManager.GetString("TicketSystemCardContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ticket System.
+        /// </summary>
+        public static string TicketSystemCardHeader {
+            get {
+                return ResourceManager.GetString("TicketSystemCardHeader", resourceCulture);
             }
         }
         

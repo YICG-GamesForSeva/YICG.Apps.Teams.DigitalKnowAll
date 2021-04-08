@@ -205,7 +205,7 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
             {
                 case Constants.TeamTourChannelCommand:
                     var teamTourCards = TourCarousel.GetTeamTourCards(this.appBaseUri);
-                    await turnContext.SendActivityAsync(MessageFactory.Carousel(teamTourCards));
+                    await turnContext.SendActivityAsync(MessageFactory.Carousel(teamTourCards), cancellationToken);
                     break;
                 default:
                     await turnContext.SendActivityAsync(MessageFactory.Text("Ooook... My 🤖 🧠 cannot understand!!!"), cancellationToken);
