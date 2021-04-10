@@ -10,7 +10,10 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.Bot.Builder;
+    using Microsoft.Bot.Connector.Authentication;
     using Microsoft.Bot.Schema;
+    using Microsoft.Bot.Schema.Teams;
+    using Newtonsoft.Json.Linq;
     using YICG.Apps.Teams.DigitalKnowBot.Cards;
     using YICG.Apps.Teams.DigitalKnowBot.Common.Models;
     using YICG.Apps.Teams.DigitalKnowBot.Properties;
@@ -21,14 +24,17 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
     public class GangaGameBot : ActivityHandler
     {
         private readonly string appBaseUri;
+        private readonly MicrosoftAppCredentials microsoftAppCredentials;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GangaGameBot"/> class.
         /// </summary>
         /// <param name="appBaseUri">Application Base URL.</param>
-        public GangaGameBot(string appBaseUri)
+        /// <param name="microsoftAppCredentials">These are the Microsoft App ID and Microsoft App Password.</param>
+        public GangaGameBot(string appBaseUri, MicrosoftAppCredentials microsoftAppCredentials)
         {
             this.appBaseUri = appBaseUri;
+            this.microsoftAppCredentials = microsoftAppCredentials;
         }
 
         /// <summary>
@@ -198,7 +204,8 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
             switch (text)
             {
                 case Constants.TeamTourChannelCommand:
-                    await turnContext.SendActivityAsync(MessageFactory.Text("Cool, you want to know how I help team! I'll show you in a minute!"), cancellationToken);
+                    var teamTourCards = TourCarousel.GetTeamTourCards(this.appBaseUri);
+                    await turnContext.SendActivityAsync(MessageFactory.Carousel(teamTourCards), cancellationToken);
                     break;
                 default:
                     await turnContext.SendActivityAsync(MessageFactory.Text("Ooook... My 🤖 🧠 cannot understand!!!"), cancellationToken);
@@ -208,7 +215,44 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
 
         private async Task OnMembersAddedToTeamAsync(IList<ChannelAccount> membersAdded, ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken)
         {
-            await turnContext.SendActivityAsync(MessageFactory.Text("Hello there, this message runs because I'm added to a team"), cancellationToken);
+            var activity = turnContext.Activity;
+            if (membersAdded.Any(m => m.Id == activity.Recipient.Id))
+            {
+                var teamDetails = ((JObject)turnContext.Activity.ChannelData).ToObject<TeamsChannelData>();
+                var botDisplayName = turnContext.Activity.Recipient.Name;
+                var teamWelcomeCardAttachment = WelcomeTeamCard.GetCard();
+                await this.SendCardToTeamAsync(turnContext, teamWelcomeCardAttachment, teamDetails.Team.Id, cancellationToken);
+            }
+        }
+
+        private async Task<ConversationResourceResponse> SendCardToTeamAsync(ITurnContext<IConversationUpdateActivity> turnContext, Attachment cardToSend, string teamId, CancellationToken cancellationToken)
+        {
+            var conversationParameters = new ConversationParameters
+            {
+                Activity = (Activity)MessageFactory.Attachment(cardToSend),
+                ChannelData = new TeamsChannelData { Channel = new ChannelInfo(teamId) },
+            };
+
+            var tcs = new TaskCompletionSource<ConversationResourceResponse>();
+            await ((BotFrameworkAdapter)turnContext.Adapter).CreateConversationAsync(
+                null,   // If we set channel = "msteams", there is an error as preinstalled middleware expects ChannelData to be present
+                turnContext.Activity.ServiceUrl,
+                this.microsoftAppCredentials,
+                conversationParameters,
+                (newTurnContext, newCancellationToken) =>
+                {
+                    var activity = newTurnContext.Activity;
+                    tcs.SetResult(new ConversationResourceResponse
+                    {
+                        Id = activity.Conversation.Id,
+                        ActivityId = activity.Id,
+                        ServiceUrl = activity.ServiceUrl,
+                    });
+                    return Task.CompletedTask;
+                },
+                cancellationToken);
+
+            return await tcs.Task;
         }
 
         private async Task OnMembersAddedToPersonalChatAsync(IList<ChannelAccount> membersAdded, ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken)

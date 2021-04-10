@@ -15,7 +15,7 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Cards
     public class TourCarousel
     {
         /// <summary>
-        /// This method generates the user tour carousel in the personale scope.
+        /// This method generates the user tour carousel in the personal scope.
         /// </summary>
         /// <param name="appBaseUri">Application based Uri.</param>
         /// <returns>A list of cards to render as the user tour.</returns>
@@ -31,6 +31,26 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Cards
                 GetCard(Strings.FunctionCardHeader, Strings.FunctionCardContent, appBaseUri + "/content/Askaquestion.png"),
                 GetCard(Strings.AskAGuideHeader, Strings.AskAGuideContent, appBaseUri + "/content/Expertinquiry.png"),
                 GetCard(Strings.ShareFeedbackHeader, Strings.ShareFeedbackContent, appBaseUri + "/content/Sharefeedback.png"),
+            };
+        }
+
+        /// <summary>
+        /// This method generates the user tour carousel in the team scope.
+        /// </summary>
+        /// <param name="appBaseUri">Application based Uri.</param>
+        /// <returns>A list of cards to render as the team tour.</returns>
+        public static IEnumerable<Attachment> GetTeamTourCards(string appBaseUri)
+        {
+            if (appBaseUri is null)
+            {
+                throw new ArgumentNullException(nameof(appBaseUri));
+            }
+
+            return new List<Attachment>
+            {
+                GetCard(Strings.NotificationsCardHeader, Strings.NotificationsCardContent, appBaseUri + "/content/Notifications.png"),
+                GetCard(Strings.EndUserCardHeader, Strings.EndUserCardContent, appBaseUri + "/content/Enduserchat.png"),
+                GetCard(Strings.TicketSystemTeamHeader, Strings.TicketSystemTeamContent, appBaseUri + "/content/Ticketsystem.png"),
             };
         }
 

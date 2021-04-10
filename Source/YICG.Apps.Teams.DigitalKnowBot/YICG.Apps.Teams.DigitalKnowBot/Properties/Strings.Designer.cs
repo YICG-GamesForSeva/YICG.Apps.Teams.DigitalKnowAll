@@ -61,7 +61,7 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If I return an answer which is not what you&apos;re looking for (in other words, BAD) you can always ask an expert to help..
+        ///   Looks up a localized string similar to If I return an answer which is not what you&apos;re looking for, you can always ask an expert to help..
         /// </summary>
         public static string AskAGuideContent {
             get {
@@ -75,6 +75,24 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Properties {
         public static string AskAGuideHeader {
             get {
                 return ResourceManager.GetString("AskAGuideHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can answer the questions from the end users and satisfy the knowledge seekers..
+        /// </summary>
+        public static string EndUserCardContent {
+            get {
+                return ResourceManager.GetString("EndUserCardContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to End Users.
+        /// </summary>
+        public static string EndUserCardHeader {
+            get {
+                return ResourceManager.GetString("EndUserCardHeader", resourceCulture);
             }
         }
         
@@ -97,7 +115,25 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I encourage you to share more feedback about how I&apos;m doing (be kind please), so that I can help you better in the future..
+        ///   Looks up a localized string similar to Each time you assign tickets, the end user will recieve a notification..
+        /// </summary>
+        public static string NotificationsCardContent {
+            get {
+                return ResourceManager.GetString("NotificationsCardContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notifications.
+        /// </summary>
+        public static string NotificationsCardHeader {
+            get {
+                return ResourceManager.GetString("NotificationsCardHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I encourage you to share more feedback about how I&apos;m doing, so that I can help you better in the future..
         /// </summary>
         public static string ShareFeedbackContent {
             get {
@@ -115,11 +151,38 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Team Tour.
+        /// </summary>
+        public static string TakeATeamTourButtonText {
+            get {
+                return ResourceManager.GetString("TakeATeamTourButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Take a tour!.
         /// </summary>
         public static string TakeATourButtonText {
             get {
                 return ResourceManager.GetString("TakeATourButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Here you can assign tickets, and also mark them closed once a proper solution has been reached..
+        /// </summary>
+        public static string TicketSystemTeamContent {
+            get {
+                return ResourceManager.GetString("TicketSystemTeamContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ticketing System.
+        /// </summary>
+        public static string TicketSystemTeamHeader {
+            get {
+                return ResourceManager.GetString("TicketSystemTeamHeader", resourceCulture);
             }
         }
         
@@ -133,11 +196,20 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to _Aloha_ 👋👋👋.
+        ///   Looks up a localized string similar to _Hello!_ 👋👋👋.
         /// </summary>
         public static string UserWelcomeCardHeader {
             get {
                 return ResourceManager.GetString("UserWelcomeCardHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hello team! I&apos;m going to help you with understanding the tickets, assigning them, and connecting you to the knowledge seekers to the end users. To learn more, click on _Take A Tour_..
+        /// </summary>
+        public static string WelcomeTeamCardContent {
+            get {
+                return ResourceManager.GetString("WelcomeTeamCardContent", resourceCulture);
             }
         }
     }
