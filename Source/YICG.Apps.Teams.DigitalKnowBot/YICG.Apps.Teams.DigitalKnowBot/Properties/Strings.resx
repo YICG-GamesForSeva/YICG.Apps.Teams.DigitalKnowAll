@@ -160,6 +160,9 @@
   <data name="TicketSystemCardHeader" xml:space="preserve">
     <value>Ticket System</value>
   </data>
+  <data name="UnrecognizedTeamInputMessage" xml:space="preserve">
+    <value>Ooook... My 🤖 🧠 cannot understand what you are asking me to do, and I don't think I can do a lot of user specific functions in a team. If you want to ask me a question, talk to me 1:1. Otherwise, click on the tour button at the bottom of this card</value>
+  </data>
   <data name="UserWelcomeCardContent" xml:space="preserve">
     <value>Hi! I’m the Ganga River Rescue Bot! If you want to know more about what I do, click on _Take a tour_ below.</value>
     <comment>Introduction of the bot.</comment>

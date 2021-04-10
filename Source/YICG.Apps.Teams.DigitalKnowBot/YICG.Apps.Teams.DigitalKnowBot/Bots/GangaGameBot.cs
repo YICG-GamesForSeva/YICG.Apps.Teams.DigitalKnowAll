@@ -208,7 +208,8 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
                     await turnContext.SendActivityAsync(MessageFactory.Carousel(teamTourCards), cancellationToken);
                     break;
                 default:
-                    await turnContext.SendActivityAsync(MessageFactory.Text("Ooook... My 🤖 🧠 cannot understand!!!"), cancellationToken);
+                    var unrecognizedInputCard = UnrecognizedTeamInputCard.GetCard();
+                    await turnContext.SendActivityAsync(MessageFactory.Attachment(unrecognizedInputCard), cancellationToken);
                     break;
             }
         }

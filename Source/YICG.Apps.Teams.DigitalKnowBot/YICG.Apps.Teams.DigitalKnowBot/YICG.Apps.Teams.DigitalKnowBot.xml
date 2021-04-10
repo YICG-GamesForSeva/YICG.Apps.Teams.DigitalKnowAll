@@ -71,6 +71,18 @@
             <param name="appBaseUri">The local address of the bot.</param>
             <returns>A type of <see cref="T:System.Collections.Generic.IEnumerable`1"/> which will allow for the carousel tour to be shown.</returns>
         </member>
+        <member name="T:YICG.Apps.Teams.DigitalKnowBot.Cards.UnrecognizedTeamInputCard">
+            <summary>
+            This class is responsible for creating the unrecognized input whenever there is a message
+            sent to the bot that's installed in a team.
+            </summary>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Cards.UnrecognizedTeamInputCard.GetCard">
+            <summary>
+            This method will generate an adaptive card to be sent in a team conversation.
+            </summary>
+            <returns>An attachment to append to a message.</returns>
+        </member>
         <member name="T:YICG.Apps.Teams.DigitalKnowBot.Cards.WelcomeCard">
             <summary>
             This class is for the welcome card in the personal scope.
@@ -218,6 +230,11 @@
         <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.TicketSystemCardHeader">
             <summary>
               Looks up a localized string similar to Ticket System.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.UnrecognizedTeamInputMessage">
+            <summary>
+              Looks up a localized string similar to Ooook... My 🤖 🧠 cannot understand what you are asking me to do, and I don&apos;t think I can do a lot of user specific functions in a team. If you want to ask me a question, talk to me 1:1. Otherwise, click on the tour button at the bottom of this card.
             </summary>
         </member>
         <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.UserWelcomeCardContent">
