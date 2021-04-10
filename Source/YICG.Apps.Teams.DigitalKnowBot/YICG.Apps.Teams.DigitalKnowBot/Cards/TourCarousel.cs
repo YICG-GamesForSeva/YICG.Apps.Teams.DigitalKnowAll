@@ -34,6 +34,26 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Cards
             };
         }
 
+        /// <summary>
+        /// This method will generate the team tour carousel.
+        /// </summary>
+        /// <param name="appBaseUri">The local address of the bot.</param>
+        /// <returns>A type of <see cref="IEnumerable{Attachment}"/> which will allow for the carousel tour to be shown.</returns>
+        public static IEnumerable<Attachment> GetTeamTourCards(string appBaseUri)
+        {
+            if (appBaseUri is null)
+            {
+                throw new ArgumentNullException(nameof(appBaseUri));
+            }
+
+            return new List<Attachment>
+            {
+                GetCard(Strings.NotificationCardHeader, Strings.NotificationCardContent, appBaseUri + "/content/Notifications.png"),
+                GetCard(Strings.TicketSystemCardHeader, Strings.TicketSystemCardContent, appBaseUri + "/content/Ticketsystem.png"),
+                GetCard(Strings.EndUserCardHeader, Strings.EndUserCardContent, appBaseUri + "/content/Enduserchat.png"),
+            };
+        }
+
         private static Attachment GetCard(string cardHeader, string cardContent, string imageLocation)
         {
             HeroCard tourCarouselCard = new HeroCard
