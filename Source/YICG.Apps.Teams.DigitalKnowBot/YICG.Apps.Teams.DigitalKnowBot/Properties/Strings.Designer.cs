@@ -187,6 +187,15 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ooook... My 🤖 🧠 cannot understand what you are asking me to do, and I don&apos;t think I can do a lot of user specific functions in a team. If you want to ask me a question, talk to me 1:1. Otherwise, click on the tour button at the bottom of this card.
+        /// </summary>
+        public static string UnrecognizedTeamInputMessage {
+            get {
+                return ResourceManager.GetString("UnrecognizedTeamInputMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hi! I’m the Ganga River Rescue Bot! If you want to know more about what I do, click on _Take a tour_ below..
         /// </summary>
         public static string UserWelcomeCardContent {
