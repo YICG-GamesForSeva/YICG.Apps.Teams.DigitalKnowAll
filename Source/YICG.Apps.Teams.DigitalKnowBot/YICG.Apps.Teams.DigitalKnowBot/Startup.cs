@@ -56,10 +56,12 @@ namespace YICG.Apps.Teams.DigitalKnowBot
             // Create the bot as a transient. In this case the ASP Controller is expecting an IBot.
             services.AddTransient<IBot, GangaGameBot>((provider) => new GangaGameBot(
                 this.Configuration["AppBaseUri"],
+                this.Configuration["QnAMakerEndpointKey"],
+                this.Configuration["QnAMakerKbId"],
+                provider.GetRequiredService<IQnAMakerFactory>(),
                 provider.GetRequiredService<MicrosoftAppCredentials>()));
 
             services.AddApplicationInsightsTelemetry();
-
             services.AddSingleton<IQnAMakerFactory, QnAMakerFactory>();
             services.AddSingleton<ISearchService, SearchService>();
             services.AddMemoryCache();

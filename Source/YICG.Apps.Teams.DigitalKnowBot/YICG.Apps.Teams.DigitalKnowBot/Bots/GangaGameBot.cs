@@ -10,6 +10,7 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.Bot.Builder;
+    using Microsoft.Bot.Builder.AI.QnA;
     using Microsoft.Bot.Connector.Authentication;
     using Microsoft.Bot.Schema;
     using Microsoft.Bot.Schema.Teams;
@@ -17,6 +18,7 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
     using YICG.Apps.Teams.DigitalKnowBot.Cards;
     using YICG.Apps.Teams.DigitalKnowBot.Common.Models;
     using YICG.Apps.Teams.DigitalKnowBot.Properties;
+    using YICG.Apps.Teams.DigitalKnowBot.Services;
 
     /// <summary>
     /// This class is our main bot class that will execute all of the functionality.
@@ -24,16 +26,25 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
     public class GangaGameBot : ActivityHandler
     {
         private readonly string appBaseUri;
+        private readonly string qnaMakerEndpointKey;
+        private readonly string qnaMakerKbId;
         private readonly MicrosoftAppCredentials microsoftAppCredentials;
+        private readonly IQnAMakerFactory qnaMakerFactory;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GangaGameBot"/> class.
         /// </summary>
         /// <param name="appBaseUri">Application Base URL.</param>
+        /// <param name="qnaMakerFactory">Our QnA Maker API DI.</param>
         /// <param name="microsoftAppCredentials">The Microsoft Application Credentials.</param>
-        public GangaGameBot(string appBaseUri, MicrosoftAppCredentials microsoftAppCredentials)
+        /// <param name="qnaMakerEndpointKey">Qna Maker Endpoint key.</param>
+        /// <param name="qnaMakerKbId">Qna Maker KB ID.</param>
+        public GangaGameBot(string appBaseUri, string qnaMakerEndpointKey, string qnaMakerKbId, IQnAMakerFactory qnaMakerFactory, MicrosoftAppCredentials microsoftAppCredentials)
         {
             this.appBaseUri = appBaseUri;
+            this.qnaMakerEndpointKey = qnaMakerEndpointKey;
+            this.qnaMakerKbId = qnaMakerKbId;
+            this.qnaMakerFactory = qnaMakerFactory;
             this.microsoftAppCredentials = microsoftAppCredentials;
         }
 
@@ -181,9 +192,41 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
                     await turnContext.SendActivityAsync(MessageFactory.Text("You're telling on me?! Really?! How rude!! 👀"), cancellationToken);
                     break;
                 default:
-                    var replyText = $"Echo: {messageText}";
-                    await turnContext.SendActivityAsync(MessageFactory.Text(replyText, replyText), cancellationToken);
+                    // var replyText = $"Echo: {messageText}";
+                    // await turnContext.SendActivityAsync(MessageFactory.Text(replyText, replyText), cancellationToken);
+                    var queryResult = await this.GetAnswerFromQnAMakerAsync(messageText, turnContext, cancellationToken);
+                    if (queryResult != null)
+                    {
+                        await turnContext.SendActivityAsync(MessageFactory.Attachment(ResponseCard.GetCard(queryResult.Questions[0], queryResult.Answer, messageText)), cancellationToken);
+                    }
+                    else
+                    {
+                        await turnContext.SendActivityAsync(MessageFactory.Text("Zoinks! I can't understand your question... 😭"), cancellationToken);
+                    }
+
                     break;
+            }
+        }
+
+        private async Task<QueryResult> GetAnswerFromQnAMakerAsync(string messageText, ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
+        {
+            if (string.IsNullOrWhiteSpace(messageText))
+            {
+                return null;
+            }
+
+            try
+            {
+                var kbId = this.qnaMakerKbId;
+                var endpointKey = this.qnaMakerEndpointKey;
+                var qnaMaker = this.qnaMakerFactory.GetQnAMaker(kbId, endpointKey);
+                var response = await qnaMaker.GetAnswersAsync(turnContext);
+
+                return response?.FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                return null;
             }
         }
 
@@ -208,8 +251,7 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
                     await turnContext.SendActivityAsync(MessageFactory.Carousel(teamTourCards), cancellationToken);
                     break;
                 default:
-                    var unrecognizedInputCard = UnrecognizedTeamInputCard.GetCard();
-                    await turnContext.SendActivityAsync(MessageFactory.Attachment(unrecognizedInputCard), cancellationToken);
+                    await turnContext.SendActivityAsync(MessageFactory.Text("Ooook... My 🤖 🧠 cannot understand!!!"), cancellationToken);
                     break;
             }
         }

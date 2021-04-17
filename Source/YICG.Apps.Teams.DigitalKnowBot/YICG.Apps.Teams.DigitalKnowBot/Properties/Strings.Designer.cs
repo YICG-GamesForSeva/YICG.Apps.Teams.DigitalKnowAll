@@ -133,6 +133,15 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Here&apos;s what I found:.
+        /// </summary>
+        public static string ResponseCardHeaderText {
+            get {
+                return ResourceManager.GetString("ResponseCardHeaderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to I encourage you to share more feedback about how I&apos;m doing (be kind please), so that I can help you better in the future..
         /// </summary>
         public static string ShareFeedbackContent {
