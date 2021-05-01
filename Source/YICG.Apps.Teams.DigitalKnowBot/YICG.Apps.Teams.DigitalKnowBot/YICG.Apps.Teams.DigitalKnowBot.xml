@@ -55,6 +55,36 @@
             <param name="cancellationToken">The cancellation token which propogates to signal execution completion.</param>
             <returns>A unit of execution that represents an asynchronous operation.</returns>
         </member>
+        <member name="T:YICG.Apps.Teams.DigitalKnowBot.Cards.AskAnExpertCard">
+            <summary>
+            This class will generate the "Ask An Expert" card.
+            </summary>
+        </member>
+        <member name="F:YICG.Apps.Teams.DigitalKnowBot.Cards.AskAnExpertCard.AskAnExpertSubmitText">
+            <summary>
+            Text associated with the ask an expert command.
+            </summary>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Cards.AskAnExpertCard.GetCard">
+            <summary>
+            This method will render the Ask An Expert card, when invoked from the bot power command menu.
+            </summary>
+            <returns>The ask an expert card.</returns>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Cards.AskAnExpertCard.GetCard(YICG.Apps.Teams.DigitalKnowBot.Common.Models.ResponseCardPayload)">
+            <summary>
+            This method will render the Ask An Expert card, when invoked from a KB response.
+            </summary>
+            <param name="payload">The payload from the response card that contains the KB details.</param>
+            <returns>The ask an expert card with KB details.</returns>
+        </member>
+        <member name="M:YICG.Apps.Teams.DigitalKnowBot.Cards.AskAnExpertCard.GetCard(YICG.Apps.Teams.DigitalKnowBot.Common.Models.AskAnExpertCardPayload)">
+            <summary>
+            This method will render the Ask An Expert card if there are validation errors and marks the errors if any.
+            </summary>
+            <param name="payload">The Ask An Expert card details, including errors if there are any.</param>
+            <returns>The ask an expert card with validation error details.</returns>
+        </member>
         <member name="T:YICG.Apps.Teams.DigitalKnowBot.Cards.ResponseCard">
             <summary>
             This class is responsible for rendering a QnA Maker response if found for a user question.
@@ -189,6 +219,16 @@
               Looks up a localized string similar to Ask an expert.
             </summary>
         </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.AskAnExpertButtonText">
+            <summary>
+              Looks up a localized string similar to Ask An Expert.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.AskAnExpertDisplayText">
+            <summary>
+              Looks up a localized string similar to Ask an expert.
+            </summary>
+        </member>
         <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.EndUserCardContent">
             <summary>
               Looks up a localized string similar to Maybe me sending out updates does help, but what can close a ticket the fastest? You being able to message the end user yourself - this way we all can do our part to help the users!.
@@ -224,9 +264,19 @@
               Looks up a localized string similar to Here&apos;s what I found:.
             </summary>
         </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.ShareFeedbackButtonText">
+            <summary>
+              Looks up a localized string similar to Share Feedback.
+            </summary>
+        </member>
         <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.ShareFeedbackContent">
             <summary>
               Looks up a localized string similar to I encourage you to share more feedback about how I&apos;m doing (be kind please), so that I can help you better in the future..
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.ShareFeedbackDisplayText">
+            <summary>
+              Looks up a localized string similar to Share feedback.
             </summary>
         </member>
         <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.ShareFeedbackHeader">
