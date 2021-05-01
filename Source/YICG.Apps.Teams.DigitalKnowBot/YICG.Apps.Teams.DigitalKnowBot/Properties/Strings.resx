@@ -141,6 +141,9 @@
   <data name="NotificationCardHeader" xml:space="preserve">
     <value>Be Notified</value>
   </data>
+  <data name="ResponseCardHeaderText" xml:space="preserve">
+    <value>Here's what I found:</value>
+  </data>
   <data name="ShareFeedbackContent" xml:space="preserve">
     <value>I encourage you to share more feedback about how I'm doing (be kind please), so that I can help you better in the future.</value>
   </data>
