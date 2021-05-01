@@ -79,6 +79,24 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ask An Expert.
+        /// </summary>
+        public static string AskAnExpertButtonText {
+            get {
+                return ResourceManager.GetString("AskAnExpertButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ask an expert.
+        /// </summary>
+        public static string AskAnExpertDisplayText {
+            get {
+                return ResourceManager.GetString("AskAnExpertDisplayText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Maybe me sending out updates does help, but what can close a ticket the fastest? You being able to message the end user yourself - this way we all can do our part to help the users!.
         /// </summary>
         public static string EndUserCardContent {
@@ -142,11 +160,29 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Share Feedback.
+        /// </summary>
+        public static string ShareFeedbackButtonText {
+            get {
+                return ResourceManager.GetString("ShareFeedbackButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to I encourage you to share more feedback about how I&apos;m doing (be kind please), so that I can help you better in the future..
         /// </summary>
         public static string ShareFeedbackContent {
             get {
                 return ResourceManager.GetString("ShareFeedbackContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Share Feedback.
+        /// </summary>
+        public static string ShareFeedbackDisplayText {
+            get {
+                return ResourceManager.GetString("ShareFeedbackDisplayText", resourceCulture);
             }
         }
         

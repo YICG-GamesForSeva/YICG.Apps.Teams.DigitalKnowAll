@@ -186,7 +186,7 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
                     await turnContext.SendActivityAsync(MessageFactory.Carousel(userTourCards), cancellationToken);
                     break;
                 case Constants.AskAnExpertPersonalCommand:
-                    await turnContext.SendActivityAsync(MessageFactory.Text("Pump the breaks! You need help already?! I'll get it to you!"), cancellationToken);
+                    await turnContext.SendActivityAsync(MessageFactory.Attachment(AskAnExpertCard.GetCard()), cancellationToken);
                     break;
                 case Constants.ShareFeedbackPersonalCommand:
                     await turnContext.SendActivityAsync(MessageFactory.Text("You're telling on me?! Really?! How rude!! 👀"), cancellationToken);

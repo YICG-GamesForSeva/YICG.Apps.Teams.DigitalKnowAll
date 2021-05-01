@@ -7,6 +7,7 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Cards
     using System.Collections.Generic;
     using AdaptiveCards;
     using Microsoft.Bot.Schema;
+    using YICG.Apps.Teams.DigitalKnowBot.Common.Models;
     using YICG.Apps.Teams.DigitalKnowBot.Properties;
 
     /// <summary>
@@ -37,6 +38,39 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Cards
                     {
                         Text = answer,
                         Wrap = true,
+                    },
+                },
+                Actions = new List<AdaptiveAction>
+                {
+                    new AdaptiveSubmitAction
+                    {
+                        Title = Strings.AskAnExpertButtonText,
+                        Data = new ResponseCardPayload
+                        {
+                            MsTeams = new CardAction
+                            {
+                                Type = ActionTypes.MessageBack,
+                                DisplayText = Strings.AskAnExpertDisplayText,
+                                Text = Constants.AskAnExpertPersonalCommand,
+                            },
+                            UserQuestion = userQuestion,
+                            KnowledgeBaseAnswer = answer,
+                        },
+                    },
+                    new AdaptiveSubmitAction
+                    {
+                        Title = Strings.ShareFeedbackButtonText,
+                        Data = new ResponseCardPayload
+                        {
+                            MsTeams = new CardAction
+                            {
+                                Type = ActionTypes.MessageBack,
+                                DisplayText = Strings.ShareFeedbackDisplayText,
+                                Text = Constants.ShareFeedbackPersonalCommand,
+                            },
+                            UserQuestion = userQuestion,
+                            KnowledgeBaseAnswer = answer,
+                        },
                     },
                 },
             };
