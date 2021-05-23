@@ -88,11 +88,47 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ask An Expert.
+        /// </summary>
+        public static string AskAnExpertCardTitleText {
+            get {
+                return ResourceManager.GetString("AskAnExpertCardTitleText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ask an expert.
         /// </summary>
         public static string AskAnExpertDisplayText {
             get {
                 return ResourceManager.GetString("AskAnExpertDisplayText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type your detailed question, and supporting details here (500 characters max).
+        /// </summary>
+        public static string AskAnExpertPlaceholderText {
+            get {
+                return ResourceManager.GetString("AskAnExpertPlaceholderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Looks like you need extra help to resolve your query. Fill in the form below so that I can reach out to the right people to get you the help you require..
+        /// </summary>
+        public static string AskAnExpertSubheaderText {
+            get {
+                return ResourceManager.GetString("AskAnExpertSubheaderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        public static string DescriptionText {
+            get {
+                return ResourceManager.GetString("DescriptionText", resourceCulture);
             }
         }
         
@@ -129,6 +165,15 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Properties {
         public static string FunctionCardHeader {
             get {
                 return ResourceManager.GetString("FunctionCardHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title field is mandatory.
+        /// </summary>
+        public static string MandatoryTitleFieldText {
+            get {
+                return ResourceManager.GetString("MandatoryTitleFieldText", resourceCulture);
             }
         }
         
@@ -196,6 +241,15 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter the short title here (50 characters max).
+        /// </summary>
+        public static string ShowCardTitleText {
+            get {
+                return ResourceManager.GetString("ShowCardTitleText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Team tour.
         /// </summary>
         public static string TakeATeamTourButtonText {
@@ -228,6 +282,15 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Properties {
         public static string TicketSystemCardHeader {
             get {
                 return ResourceManager.GetString("TicketSystemCardHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title (Required).
+        /// </summary>
+        public static string TitleRequiredText {
+            get {
+                return ResourceManager.GetString("TitleRequiredText", resourceCulture);
             }
         }
         

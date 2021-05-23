@@ -65,13 +65,13 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Cards
                     new AdaptiveTextBlock
                     {
                         Weight = AdaptiveTextWeight.Bolder,
-                        Text = Resource.AskAnExpertText1,
+                        Text = Strings.AskAnExpertCardTitleText,
                         Size = AdaptiveTextSize.Large,
                         Wrap = true,
                     },
                     new AdaptiveTextBlock
                     {
-                        Text = Resource.AskAnExpertSubheaderText,
+                        Text = Strings.AskAnExpertSubheaderText,
                         Wrap = true,
                     },
                     new AdaptiveColumnSet
@@ -85,7 +85,7 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Cards
                                 {
                                     new AdaptiveTextBlock
                                     {
-                                        Text = Resource.TitleRequiredText,
+                                        Text = Strings.TitleRequiredText,
                                         Wrap = true,
                                     },
                                 },
@@ -96,7 +96,7 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Cards
                                 {
                                     new AdaptiveTextBlock
                                     {
-                                        Text = (showValidationErrors && string.IsNullOrWhiteSpace(data.Title)) ? Resource.MandatoryTitleFieldText : string.Empty,
+                                        Text = (showValidationErrors && string.IsNullOrWhiteSpace(data.Title)) ? Strings.MandatoryTitleFieldText : string.Empty,
                                         Color = AdaptiveTextColor.Attention,
                                         HorizontalAlignment = AdaptiveHorizontalAlignment.Right,
                                         Wrap = true,
@@ -108,20 +108,20 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Cards
                     new AdaptiveTextInput
                     {
                         Id = nameof(AskAnExpertCardPayload.Title),
-                        Placeholder = Resource.ShowCardTitleText,
+                        Placeholder = Strings.ShowCardTitleText,
                         IsMultiline = false,
                         Spacing = AdaptiveSpacing.Small,
                         Value = data.Title,
                     },
                     new AdaptiveTextBlock
                     {
-                        Text = Resource.DescriptionText,
+                        Text = Strings.DescriptionText,
                         Wrap = true,
                     },
                     new AdaptiveTextInput
                     {
                         Id = nameof(AskAnExpertCardPayload.Description),
-                        Placeholder = Resource.AskAnExpertPlaceholderText,
+                        Placeholder = Strings.AskAnExpertPlaceholderText,
                         IsMultiline = true,
                         Spacing = AdaptiveSpacing.Small,
                         Value = data.Description,

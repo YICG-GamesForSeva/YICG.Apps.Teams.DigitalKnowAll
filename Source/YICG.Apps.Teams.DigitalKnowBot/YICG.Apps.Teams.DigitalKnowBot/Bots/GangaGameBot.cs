@@ -178,6 +178,12 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
                 throw new ArgumentNullException(nameof(turnContext));
             }
 
+            if (!string.IsNullOrEmpty(message.ReplyToId) && (message.Value != null) && ((JObject)message.Value).HasValues)
+            {
+                await this.OnAdaptiveCardSubmitInPersonalChatAsync(message, turnContext, cancellationToken);
+                return;
+            }
+
             string messageText = (message.Text ?? string.Empty).Trim().ToLower();
             switch (messageText)
             {
@@ -205,6 +211,74 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
                     }
 
                     break;
+            }
+        }
+
+        private async Task OnAdaptiveCardSubmitInPersonalChatAsync(IMessageActivity message, ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
+        {
+            // This card will notify the team of experts.
+            Attachment smeTeamCard = null;
+
+            // This card will notify the end user.
+            Attachment userCard = null;
+
+            // This is a new ticket to be inserted into our database.
+            TicketEntity newTicket = null;
+
+            switch (message.Text)
+            {
+                case Constants.AskAnExpertPersonalCommand:
+                    break;
+                case Constants.ShareFeedbackPersonalCommand:
+                    break;
+                case AskAnExpertCard.AskAnExpertSubmitText:
+                    var askAnExpertPayload = ((JObject)message.Value).ToObject<AskAnExpertCardPayload>();
+
+                    // Validating the fields of data.
+                    if (string.IsNullOrEmpty(askAnExpertPayload.Title))
+                    {
+                        var updateCardActivity = new Activity(ActivityTypes.Message)
+                        {
+                            Id = turnContext.Activity.ReplyToId,
+                            Conversation = turnContext.Activity.Conversation,
+                            Attachments = new List<Attachment> { AskAnExpertCard.GetCard(askAnExpertPayload) },
+                        };
+
+                        await turnContext.UpdateActivityAsync(updateCardActivity, cancellationToken);
+                        return;
+                    }
+
+                    var userDetails = await this.GetUserDetailsInPersonalChatAsync(turnContext, cancellationToken);
+                    newTicket = await this.CreateTicketAsync(message, askAnExpertPayload, userDetails);
+                    smeTeamCard = new SmeTicketCard(newTicket).ToAttachment(message.LocalTimestamp);
+                    userCard = new UserNotificationCard(newTicket).ToAttachment(Strings.NotificationCardContent, message.LocalTimestamp);
+                    break;
+                case ShareFeedbackCard.ShareFeedbackSubmitText:
+                    break;
+                default:
+                    await turnContext.SendActivityAsync(MessageFactory.Text("I am not sure what you are submitting here!"), cancellationToken);
+                    break;
+            }
+
+            if (smeTeamCard != null)
+            {
+                // TODO: Populate the channelId through the appsettings.json
+                var channelId = string.Empty;
+                var resourceResponse = await this.SendCardToTeamAsync(turnContext, smeTeamCard, channelId, cancellationToken);
+
+                // If a new ticket was created, update the conversation information to the ticket.
+                if (newTicket != null)
+                {
+                    newTicket.SmeCardActivityId = resourceResponse.ActivityId;
+                    newTicket.SmeThreadConversationId = resourceResponse.Id;
+                    await this.ticketsProvider.SaveOrUpdateTicketAsync(newTicket);
+                }
+            }
+
+            // Notify the end user.
+            if (userCard != null)
+            {
+                await turnContext.SendActivityAsync(MessageFactory.Attachment(userCard), cancellationToken);
             }
         }
 
@@ -269,7 +343,7 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
             }
         }
 
-        private async Task<ConversationResourceResponse> SendCardToTeamAsync(ITurnContext<IConversationUpdateActivity> turnContext, Attachment cardToSend, string teamId, CancellationToken cancellationToken)
+        private async Task<ConversationResourceResponse> SendCardToTeamAsync(ITurnContext turnContext, Attachment cardToSend, string teamId, CancellationToken cancellationToken)
         {
             var conversationParameters = new ConversationParameters
             {

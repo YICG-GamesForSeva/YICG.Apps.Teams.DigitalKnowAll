@@ -224,9 +224,29 @@
               Looks up a localized string similar to Ask An Expert.
             </summary>
         </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.AskAnExpertCardTitleText">
+            <summary>
+              Looks up a localized string similar to Ask An Expert.
+            </summary>
+        </member>
         <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.AskAnExpertDisplayText">
             <summary>
               Looks up a localized string similar to Ask an expert.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.AskAnExpertPlaceholderText">
+            <summary>
+              Looks up a localized string similar to Type your detailed question, and supporting details here (500 characters max).
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.AskAnExpertSubheaderText">
+            <summary>
+              Looks up a localized string similar to Looks like you need extra help to resolve your query. Fill in the form below so that I can reach out to the right people to get you the help you require..
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.DescriptionText">
+            <summary>
+              Looks up a localized string similar to Description.
             </summary>
         </member>
         <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.EndUserCardContent">
@@ -247,6 +267,11 @@
         <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.FunctionCardHeader">
             <summary>
               Looks up a localized string similar to Ask a question.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.MandatoryTitleFieldText">
+            <summary>
+              Looks up a localized string similar to Title field is mandatory.
             </summary>
         </member>
         <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.NotificationCardContent">
@@ -284,6 +309,11 @@
               Looks up a localized string similar to Share Feedback.
             </summary>
         </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.ShowCardTitleText">
+            <summary>
+              Looks up a localized string similar to Enter the short title here (50 characters max).
+            </summary>
+        </member>
         <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.TakeATeamTourButtonText">
             <summary>
               Looks up a localized string similar to Team tour.
@@ -302,6 +332,11 @@
         <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.TicketSystemCardHeader">
             <summary>
               Looks up a localized string similar to Ticket System.
+            </summary>
+        </member>
+        <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.TitleRequiredText">
+            <summary>
+              Looks up a localized string similar to Title (Required).
             </summary>
         </member>
         <member name="P:YICG.Apps.Teams.DigitalKnowBot.Properties.Strings.UnrecognizedTeamInputMessage">

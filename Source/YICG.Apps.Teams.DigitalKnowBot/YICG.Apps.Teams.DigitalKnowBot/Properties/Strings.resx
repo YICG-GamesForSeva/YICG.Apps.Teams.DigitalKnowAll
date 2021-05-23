@@ -126,8 +126,22 @@
   <data name="AskAnExpertButtonText" xml:space="preserve">
     <value>Ask An Expert</value>
   </data>
+  <data name="AskAnExpertCardTitleText" xml:space="preserve">
+    <value>Ask An Expert</value>
+    <comment>Ask an expert card title header.</comment>
+  </data>
   <data name="AskAnExpertDisplayText" xml:space="preserve">
     <value>Ask an expert</value>
+  </data>
+  <data name="AskAnExpertPlaceholderText" xml:space="preserve">
+    <value>Type your detailed question, and supporting details here (500 characters max)</value>
+  </data>
+  <data name="AskAnExpertSubheaderText" xml:space="preserve">
+    <value>Looks like you need extra help to resolve your query. Fill in the form below so that I can reach out to the right people to get you the help you require.</value>
+    <comment>This is the subheading for the ask an expert card title text.</comment>
+  </data>
+  <data name="DescriptionText" xml:space="preserve">
+    <value>Description</value>
   </data>
   <data name="EndUserCardContent" xml:space="preserve">
     <value>Maybe me sending out updates does help, but what can close a ticket the fastest? You being able to message the end user yourself - this way we all can do our part to help the users!</value>
@@ -140,6 +154,9 @@
   </data>
   <data name="FunctionCardHeader" xml:space="preserve">
     <value>Ask a question</value>
+  </data>
+  <data name="MandatoryTitleFieldText" xml:space="preserve">
+    <value>Title field is mandatory</value>
   </data>
   <data name="NotificationCardContent" xml:space="preserve">
     <value>It is my job to alert you whenever there are users requesting for expert help!</value>
@@ -162,6 +179,9 @@
   <data name="ShareFeedbackHeader" xml:space="preserve">
     <value>Share Feedback</value>
   </data>
+  <data name="ShowCardTitleText" xml:space="preserve">
+    <value>Enter the short title here (50 characters max)</value>
+  </data>
   <data name="TakeATeamTourButtonText" xml:space="preserve">
     <value>Team tour</value>
   </data>
@@ -174,6 +194,9 @@
   </data>
   <data name="TicketSystemCardHeader" xml:space="preserve">
     <value>Ticket System</value>
+  </data>
+  <data name="TitleRequiredText" xml:space="preserve">
+    <value>Title (Required)</value>
   </data>
   <data name="UnrecognizedTeamInputMessage" xml:space="preserve">
     <value>Ooook... My 🤖 🧠 cannot understand what you are asking me to do, and I don't think I can do a lot of user specific functions in a team. If you want to ask me a question, talk to me 1:1. Otherwise, click on the tour button at the bottom of this card</value>
