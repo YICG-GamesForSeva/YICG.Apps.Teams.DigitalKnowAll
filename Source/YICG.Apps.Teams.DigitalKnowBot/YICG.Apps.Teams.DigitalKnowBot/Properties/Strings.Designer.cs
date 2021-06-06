@@ -196,6 +196,15 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} is requesting for support.
+        /// </summary>
+        public static string QuestionForExpertSubHeaderText {
+            get {
+                return ResourceManager.GetString("QuestionForExpertSubHeaderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Here&apos;s what I found:.
         /// </summary>
         public static string ResponseCardHeaderText {

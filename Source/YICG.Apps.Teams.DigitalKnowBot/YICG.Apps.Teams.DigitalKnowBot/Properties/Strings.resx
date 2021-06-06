@@ -164,6 +164,10 @@
   <data name="NotificationCardHeader" xml:space="preserve">
     <value>Be Notified</value>
   </data>
+  <data name="QuestionForExpertSubHeaderText" xml:space="preserve">
+    <value>{0} is requesting for support</value>
+    <comment>This subheader will tell which user is requesting for support.</comment>
+  </data>
   <data name="ResponseCardHeaderText" xml:space="preserve">
     <value>Here's what I found:</value>
   </data>

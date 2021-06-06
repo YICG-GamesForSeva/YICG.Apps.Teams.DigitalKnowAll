@@ -58,8 +58,10 @@ namespace YICG.Apps.Teams.DigitalKnowBot
                 this.Configuration["AppBaseUri"],
                 this.Configuration["QnAMakerEndpointKey"],
                 this.Configuration["QnaMakerKbId"],
+                this.Configuration["ExpertsTeamId"],
                 provider.GetRequiredService<IQnAMakerFactory>(),
-                provider.GetRequiredService<MicrosoftAppCredentials>()));
+                provider.GetRequiredService<MicrosoftAppCredentials>(),
+                provider.GetRequiredService<ITicketsProvider>()));
 
             services.AddApplicationInsightsTelemetry();
             services.AddSingleton<IQnAMakerFactory, QnAMakerFactory>();

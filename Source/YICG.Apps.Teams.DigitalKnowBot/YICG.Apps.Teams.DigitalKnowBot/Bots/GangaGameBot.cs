@@ -14,9 +14,11 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
     using Microsoft.Bot.Connector.Authentication;
     using Microsoft.Bot.Schema;
     using Microsoft.Bot.Schema.Teams;
+    using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
     using YICG.Apps.Teams.DigitalKnowBot.Cards;
     using YICG.Apps.Teams.DigitalKnowBot.Common.Models;
+    using YICG.Apps.Teams.DigitalKnowBot.Common.Providers;
     using YICG.Apps.Teams.DigitalKnowBot.Properties;
     using YICG.Apps.Teams.DigitalKnowBot.Services;
 
@@ -28,8 +30,10 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
         private readonly string appBaseUri;
         private readonly string qnaMakerEndpointKey;
         private readonly string qnaMakerKbId;
+        private readonly string teamId;
         private readonly MicrosoftAppCredentials microsoftAppCredentials;
         private readonly IQnAMakerFactory qnaMakerFactory;
+        private readonly ITicketsProvider ticketsProvider;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GangaGameBot"/> class.
@@ -37,15 +41,19 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
         /// <param name="appBaseUri">Application Base URL.</param>
         /// <param name="qnaMakerEndpointKey">QnA Maker Endpoint Key.</param>
         /// <param name="qnaMakerKbId">QnA Maker KB (knowledge base) ID.</param>
+        /// <param name="teamId">This is the Experts Team ID.</param>
         /// <param name="qnaMakerFactory">Our QnA Maker API DI.</param>
         /// <param name="microsoftAppCredentials">The Microsoft Application Credentials.</param>
-        public GangaGameBot(string appBaseUri, string qnaMakerEndpointKey, string qnaMakerKbId, IQnAMakerFactory qnaMakerFactory, MicrosoftAppCredentials microsoftAppCredentials)
+        /// <param name="ticketsProvider">The logic to create tickets and modify them.</param>
+        public GangaGameBot(string appBaseUri, string qnaMakerEndpointKey, string qnaMakerKbId, string teamId, IQnAMakerFactory qnaMakerFactory, MicrosoftAppCredentials microsoftAppCredentials, ITicketsProvider ticketsProvider)
         {
             this.appBaseUri = appBaseUri;
             this.qnaMakerEndpointKey = qnaMakerEndpointKey;
             this.qnaMakerKbId = qnaMakerKbId;
             this.qnaMakerFactory = qnaMakerFactory;
             this.microsoftAppCredentials = microsoftAppCredentials;
+            this.ticketsProvider = ticketsProvider;
+            this.teamId = teamId;
         }
 
         /// <summary>
@@ -262,8 +270,8 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
 
             if (smeTeamCard != null)
             {
-                // TODO: Populate the channelId through the appsettings.json
-                var channelId = string.Empty;
+                // TODO: Populate the channelId through the appsettings.json - next thing to do.
+                var channelId = this.teamId;
                 var resourceResponse = await this.SendCardToTeamAsync(turnContext, smeTeamCard, channelId, cancellationToken);
 
                 // If a new ticket was created, update the conversation information to the ticket.
@@ -280,6 +288,37 @@ namespace YICG.Apps.Teams.DigitalKnowBot.Bots
             {
                 await turnContext.SendActivityAsync(MessageFactory.Attachment(userCard), cancellationToken);
             }
+        }
+
+        private async Task<TeamsChannelAccount> GetUserDetailsInPersonalChatAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
+        {
+            var members = await ((BotFrameworkAdapter)turnContext.Adapter).GetConversationMembersAsync(turnContext, cancellationToken);
+            return JsonConvert.DeserializeObject<TeamsChannelAccount>(JsonConvert.SerializeObject(members[0]));
+        }
+
+        // Creates a new ticket based on the input.
+        private async Task<TicketEntity> CreateTicketAsync(IMessageActivity message, AskAnExpertCardPayload data, TeamsChannelAccount member)
+        {
+            TicketEntity ticket = new TicketEntity
+            {
+                TicketId = Guid.NewGuid().ToString(),
+                Status = (int)TicketState.Open,
+                DateCreated = DateTime.UtcNow,
+                Title = data.Title,
+                Description = data.Description,
+                RequesterName = member.Name,
+                RequesterUserPrincipalName = member.UserPrincipalName,
+                RequesterGivenName = member.GivenName,
+                RequesterConversationId = message.Conversation.Id,
+                LastModifiedByName = message.From.Name,
+                LastModifiedByObjectId = message.From.AadObjectId,
+                UserQuestion = data.UserQuestion,
+                KnowledgeBaseAnswer = data.KnowledgeBaseAnswer,
+            };
+
+            await this.ticketsProvider.SaveOrUpdateTicketAsync(ticket);
+
+            return ticket;
         }
 
         private async Task<QueryResult> GetAnswerFromQnAMakerAsync(string messageText, ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
